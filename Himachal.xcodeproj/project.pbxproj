@@ -7,13 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CB6A3A536B4838F8C55B6DA /* libPods-Himachal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A68FDC9934BE7C6BE4DF37F1 /* libPods-Himachal.a */; };
 		F70789AE1B6C697600089777 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789AD1B6C697600089777 /* main.m */; };
 		F70789B11B6C697600089777 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789B01B6C697600089777 /* AppDelegate.m */; };
-		F70789B41B6C697600089777 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789B31B6C697600089777 /* ViewController.m */; };
+		F70789B41B6C697600089777 /* HMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789B31B6C697600089777 /* HMLoginViewController.m */; };
 		F70789B71B6C697600089777 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F70789B51B6C697600089777 /* Main.storyboard */; };
 		F70789B91B6C697600089777 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F70789B81B6C697600089777 /* Images.xcassets */; };
 		F70789BC1B6C697600089777 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70789BA1B6C697600089777 /* LaunchScreen.xib */; };
 		F70789C81B6C697600089777 /* HimachalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789C71B6C697600089777 /* HimachalTests.m */; };
+		F70789D31B6C84C100089777 /* HMSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789D21B6C84C100089777 /* HMSignupViewController.m */; };
+		F7121D431B714F1800DE335B /* HMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7121D421B714F1800DE335B /* HMUser.m */; };
+		F7121D4D1B72866000DE335B /* HMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7121D4C1B72866000DE335B /* HMProfileViewController.m */; };
+		F72755041B713B25006B0DE8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F72755021B713B25006B0DE8 /* DataModel.xcdatamodeld */; };
+		F760BF3A1B72A05D0042DD87 /* HMVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF391B72A05D0042DD87 /* HMVideo.m */; };
+		F76420C71B6EA72B00DF6AAD /* HMCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420C61B6EA72B00DF6AAD /* HMCoreDataHelper.m */; };
+		F76420D61B6F3D6400DF6AAD /* HMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420D51B6F3D6400DF6AAD /* HMCameraViewController.m */; };
+		F76420D81B6FE18700DF6AAD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76420D71B6FE18700DF6AAD /* AssetsLibrary.framework */; };
+		F76420DC1B6FED1C00DF6AAD /* PBJFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */; };
+		F7FB3A241B6D5778001A8557 /* HMParseAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB3A231B6D5778001A8557 /* HMParseAPIHelper.m */; };
+		F7FB3A301B6DDFCC001A8557 /* NSString+emailValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB3A2F1B6DDFCC001A8557 /* NSString+emailValidation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,19 +39,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		803DDDA94FF12BFC7B369BA8 /* Pods-Himachal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Himachal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Himachal/Pods-Himachal.debug.xcconfig"; sourceTree = "<group>"; };
+		A68FDC9934BE7C6BE4DF37F1 /* libPods-Himachal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Himachal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6EACA92E94C4D79812CD447 /* Pods-Himachal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Himachal.release.xcconfig"; path = "Pods/Target Support Files/Pods-Himachal/Pods-Himachal.release.xcconfig"; sourceTree = "<group>"; };
 		F70789A81B6C697600089777 /* Himachal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Himachal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70789AC1B6C697600089777 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F70789AD1B6C697600089777 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F70789AF1B6C697600089777 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F70789B01B6C697600089777 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F70789B21B6C697600089777 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F70789B31B6C697600089777 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F70789B21B6C697600089777 /* HMLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMLoginViewController.h; sourceTree = "<group>"; };
+		F70789B31B6C697600089777 /* HMLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMLoginViewController.m; sourceTree = "<group>"; };
 		F70789B61B6C697600089777 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F70789B81B6C697600089777 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F70789BB1B6C697600089777 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F70789C11B6C697600089777 /* HimachalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HimachalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F70789C61B6C697600089777 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F70789C71B6C697600089777 /* HimachalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HimachalTests.m; sourceTree = "<group>"; };
+		F70789D11B6C84C100089777 /* HMSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSignupViewController.h; sourceTree = "<group>"; };
+		F70789D21B6C84C100089777 /* HMSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSignupViewController.m; sourceTree = "<group>"; };
+		F7121D411B714F1800DE335B /* HMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMUser.h; path = ../HMUser.h; sourceTree = "<group>"; };
+		F7121D421B714F1800DE335B /* HMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMUser.m; path = ../HMUser.m; sourceTree = "<group>"; };
+		F7121D4B1B72866000DE335B /* HMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProfileViewController.h; sourceTree = "<group>"; };
+		F7121D4C1B72866000DE335B /* HMProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProfileViewController.m; sourceTree = "<group>"; };
+		F72755031B713B25006B0DE8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		F760BF381B72A05D0042DD87 /* HMVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMVideo.h; sourceTree = "<group>"; };
+		F760BF391B72A05D0042DD87 /* HMVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMVideo.m; sourceTree = "<group>"; };
+		F76420C51B6EA72B00DF6AAD /* HMCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataHelper.h; sourceTree = "<group>"; };
+		F76420C61B6EA72B00DF6AAD /* HMCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCoreDataHelper.m; sourceTree = "<group>"; };
+		F76420D41B6F3D6400DF6AAD /* HMCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCameraViewController.h; sourceTree = "<group>"; };
+		F76420D51B6F3D6400DF6AAD /* HMCameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCameraViewController.m; sourceTree = "<group>"; };
+		F76420D71B6FE18700DF6AAD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		F76420DA1B6FED1C00DF6AAD /* PBJFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJFocusView.h; sourceTree = "<group>"; };
+		F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJFocusView.m; sourceTree = "<group>"; };
+		F7FB3A221B6D5778001A8557 /* HMParseAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMParseAPIHelper.h; sourceTree = "<group>"; };
+		F7FB3A231B6D5778001A8557 /* HMParseAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMParseAPIHelper.m; sourceTree = "<group>"; };
+		F7FB3A2E1B6DDFCC001A8557 /* NSString+emailValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+emailValidation.h"; sourceTree = "<group>"; };
+		F7FB3A2F1B6DDFCC001A8557 /* NSString+emailValidation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+emailValidation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F76420D81B6FE18700DF6AAD /* AssetsLibrary.framework in Frameworks */,
+				9CB6A3A536B4838F8C55B6DA /* libPods-Himachal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +97,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		581D0789C6C340F2BEBB5675 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F76420D71B6FE18700DF6AAD /* AssetsLibrary.framework */,
+				A68FDC9934BE7C6BE4DF37F1 /* libPods-Himachal.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		88DC4F0348A89A41098F469A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				803DDDA94FF12BFC7B369BA8 /* Pods-Himachal.debug.xcconfig */,
+				C6EACA92E94C4D79812CD447 /* Pods-Himachal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F707899F1B6C697600089777 = {
 			isa = PBXGroup;
 			children = (
 				F70789AA1B6C697600089777 /* Himachal */,
 				F70789C41B6C697600089777 /* HimachalTests */,
 				F70789A91B6C697600089777 /* Products */,
+				88DC4F0348A89A41098F469A /* Pods */,
+				581D0789C6C340F2BEBB5675 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -81,13 +138,13 @@
 		F70789AA1B6C697600089777 /* Himachal */ = {
 			isa = PBXGroup;
 			children = (
+				F76420D91B6FED0100DF6AAD /* Views */,
 				F70789AF1B6C697600089777 /* AppDelegate.h */,
 				F70789B01B6C697600089777 /* AppDelegate.m */,
-				F70789B21B6C697600089777 /* ViewController.h */,
-				F70789B31B6C697600089777 /* ViewController.m */,
-				F70789B51B6C697600089777 /* Main.storyboard */,
+				F7FB3A2A1B6DDF5A001A8557 /* Helpers */,
+				F7FB3A291B6DDF4E001A8557 /* Controllers */,
+				F7FB3A281B6DDF4A001A8557 /* Models */,
 				F70789B81B6C697600089777 /* Images.xcassets */,
-				F70789BA1B6C697600089777 /* LaunchScreen.xib */,
 				F70789AB1B6C697600089777 /* Supporting Files */,
 			);
 			path = Himachal;
@@ -96,8 +153,11 @@
 		F70789AB1B6C697600089777 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F70789BA1B6C697600089777 /* LaunchScreen.xib */,
+				F70789B51B6C697600089777 /* Main.storyboard */,
 				F70789AC1B6C697600089777 /* Info.plist */,
 				F70789AD1B6C697600089777 /* main.m */,
+				F72755021B713B25006B0DE8 /* DataModel.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -119,6 +179,54 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		F76420D91B6FED0100DF6AAD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F76420DA1B6FED1C00DF6AAD /* PBJFocusView.h */,
+				F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		F7FB3A281B6DDF4A001A8557 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F760BF381B72A05D0042DD87 /* HMVideo.h */,
+				F760BF391B72A05D0042DD87 /* HMVideo.m */,
+				F7121D411B714F1800DE335B /* HMUser.h */,
+				F7121D421B714F1800DE335B /* HMUser.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		F7FB3A291B6DDF4E001A8557 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F70789B21B6C697600089777 /* HMLoginViewController.h */,
+				F70789B31B6C697600089777 /* HMLoginViewController.m */,
+				F70789D11B6C84C100089777 /* HMSignupViewController.h */,
+				F70789D21B6C84C100089777 /* HMSignupViewController.m */,
+				F76420D41B6F3D6400DF6AAD /* HMCameraViewController.h */,
+				F76420D51B6F3D6400DF6AAD /* HMCameraViewController.m */,
+				F7121D4B1B72866000DE335B /* HMProfileViewController.h */,
+				F7121D4C1B72866000DE335B /* HMProfileViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F7FB3A2A1B6DDF5A001A8557 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F7FB3A221B6D5778001A8557 /* HMParseAPIHelper.h */,
+				F7FB3A231B6D5778001A8557 /* HMParseAPIHelper.m */,
+				F76420C51B6EA72B00DF6AAD /* HMCoreDataHelper.h */,
+				F76420C61B6EA72B00DF6AAD /* HMCoreDataHelper.m */,
+				F7FB3A2E1B6DDFCC001A8557 /* NSString+emailValidation.h */,
+				F7FB3A2F1B6DDFCC001A8557 /* NSString+emailValidation.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,9 +234,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F70789CB1B6C697600089777 /* Build configuration list for PBXNativeTarget "Himachal" */;
 			buildPhases = (
+				124DD2B529588AF962D266F0 /* Check Pods Manifest.lock */,
 				F70789A41B6C697600089777 /* Sources */,
 				F70789A51B6C697600089777 /* Frameworks */,
 				F70789A61B6C697600089777 /* Resources */,
+				BCF2A2B054AB58BA4C04A56C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -214,14 +324,57 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		124DD2B529588AF962D266F0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BCF2A2B054AB58BA4C04A56C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Himachal/Pods-Himachal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F70789A41B6C697600089777 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F70789B41B6C697600089777 /* ViewController.m in Sources */,
+				F72755041B713B25006B0DE8 /* DataModel.xcdatamodeld in Sources */,
+				F7121D4D1B72866000DE335B /* HMProfileViewController.m in Sources */,
+				F70789B41B6C697600089777 /* HMLoginViewController.m in Sources */,
+				F70789D31B6C84C100089777 /* HMSignupViewController.m in Sources */,
 				F70789B11B6C697600089777 /* AppDelegate.m in Sources */,
+				F76420DC1B6FED1C00DF6AAD /* PBJFocusView.m in Sources */,
+				F7FB3A301B6DDFCC001A8557 /* NSString+emailValidation.m in Sources */,
+				F76420C71B6EA72B00DF6AAD /* HMCoreDataHelper.m in Sources */,
+				F7121D431B714F1800DE335B /* HMUser.m in Sources */,
+				F760BF3A1B72A05D0042DD87 /* HMVideo.m in Sources */,
+				F76420D61B6F3D6400DF6AAD /* HMCameraViewController.m in Sources */,
 				F70789AE1B6C697600089777 /* main.m in Sources */,
+				F7FB3A241B6D5778001A8557 /* HMParseAPIHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,9 +498,11 @@
 		};
 		F70789CC1B6C697600089777 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 803DDDA94FF12BFC7B369BA8 /* Pods-Himachal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Himachal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,9 +510,11 @@
 		};
 		F70789CD1B6C697600089777 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6EACA92E94C4D79812CD447 /* Pods-Himachal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Himachal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -416,6 +573,7 @@
 				F70789CD1B6C697600089777 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F70789CE1B6C697600089777 /* Build configuration list for PBXNativeTarget "HimachalTests" */ = {
 			isa = XCConfigurationList;
@@ -424,8 +582,22 @@
 				F70789D01B6C697600089777 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F72755021B713B25006B0DE8 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F72755031B713B25006B0DE8 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = F72755031B713B25006B0DE8 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F70789A01B6C697600089777 /* Project object */;
 }

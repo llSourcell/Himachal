@@ -7,8 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "HMLoginViewController.h"
+#import <Parse/Parse.h>
 
-@interface AppDelegate ()
+
+@interface AppDelegate()
+
 
 @end
 
@@ -16,7 +20,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    NSLog(@"%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory  inDomains:NSUserDomainMask] lastObject]);
+
+    //Create navigation controller
+     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+     HMLoginViewController *loginView = [[HMLoginViewController alloc] init];
+     self.navController = [[UINavigationController alloc] initWithRootViewController:loginView];
+     self.window.rootViewController = self.navController;
+     self.window.backgroundColor = [UIColor clearColor];
+     [self.window makeKeyAndVisible];
+
+    
+    
+    //setup server auth
+    [Parse setApplicationId:@"ASQkAc72tQ1inItUqx7siwf0Y6UDKEYcdkMYM5MH"
+                  clientKey:@"dZOTmmljQFtqkeENa1PH1DcdeXdliT13RV9axIVC"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+
     return YES;
 }
 
