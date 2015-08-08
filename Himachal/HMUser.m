@@ -2,7 +2,7 @@
 //  HMUser.m
 //  
 //
-//  Created by Siraj Ravel on 8/4/15.
+//  Created by Siraj Ravel on 8/6/15.
 //
 //
 
@@ -15,9 +15,10 @@
 @dynamic facebookID;
 @dynamic follower_count;
 @dynamic following_count;
+@dynamic profilePicture;
 @dynamic userID;
 @dynamic username;
-@dynamic profilePicture;
 @dynamic videoCount;
+@dynamic password;
 
 @end

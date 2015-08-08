@@ -3,6 +3,7 @@
 
 target 'Himachal' do
 pod 'Parse'
+pod 'ParseUI'
 pod 'MBProgressHUD', '~> 0.9.1'
 pod 'RKSwipeBetweenViewControllers' 
 pod 'ComponentKit', '~> 0.12'

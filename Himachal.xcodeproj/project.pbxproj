@@ -16,10 +16,13 @@
 		F70789BC1B6C697600089777 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70789BA1B6C697600089777 /* LaunchScreen.xib */; };
 		F70789C81B6C697600089777 /* HimachalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789C71B6C697600089777 /* HimachalTests.m */; };
 		F70789D31B6C84C100089777 /* HMSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789D21B6C84C100089777 /* HMSignupViewController.m */; };
-		F7121D431B714F1800DE335B /* HMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F7121D421B714F1800DE335B /* HMUser.m */; };
-		F7121D4D1B72866000DE335B /* HMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7121D4C1B72866000DE335B /* HMProfileViewController.m */; };
 		F72755041B713B25006B0DE8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F72755021B713B25006B0DE8 /* DataModel.xcdatamodeld */; };
 		F760BF3A1B72A05D0042DD87 /* HMVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF391B72A05D0042DD87 /* HMVideo.m */; };
+		F760BF3D1B73D79E0042DD87 /* HMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF3C1B73D79E0042DD87 /* HMUser.m */; };
+		F760BF401B754BB50042DD87 /* HMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF3F1B754BB50042DD87 /* HMProfileViewController.m */; };
+		F760BF431B7566CA0042DD87 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF421B7566CA0042DD87 /* Video.m */; };
+		F760BF461B7567630042DD87 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF451B7567630042DD87 /* VideoCell.m */; };
+		F760BF491B7570270042DD87 /* HMProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF481B7570270042DD87 /* HMProfileHeaderView.m */; };
 		F76420C71B6EA72B00DF6AAD /* HMCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420C61B6EA72B00DF6AAD /* HMCoreDataHelper.m */; };
 		F76420D61B6F3D6400DF6AAD /* HMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420D51B6F3D6400DF6AAD /* HMCameraViewController.m */; };
 		F76420D81B6FE18700DF6AAD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76420D71B6FE18700DF6AAD /* AssetsLibrary.framework */; };
@@ -57,13 +60,19 @@
 		F70789C71B6C697600089777 /* HimachalTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HimachalTests.m; sourceTree = "<group>"; };
 		F70789D11B6C84C100089777 /* HMSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSignupViewController.h; sourceTree = "<group>"; };
 		F70789D21B6C84C100089777 /* HMSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSignupViewController.m; sourceTree = "<group>"; };
-		F7121D411B714F1800DE335B /* HMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMUser.h; path = ../HMUser.h; sourceTree = "<group>"; };
-		F7121D421B714F1800DE335B /* HMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMUser.m; path = ../HMUser.m; sourceTree = "<group>"; };
-		F7121D4B1B72866000DE335B /* HMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProfileViewController.h; sourceTree = "<group>"; };
-		F7121D4C1B72866000DE335B /* HMProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProfileViewController.m; sourceTree = "<group>"; };
 		F72755031B713B25006B0DE8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		F760BF381B72A05D0042DD87 /* HMVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMVideo.h; sourceTree = "<group>"; };
 		F760BF391B72A05D0042DD87 /* HMVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMVideo.m; sourceTree = "<group>"; };
+		F760BF3B1B73D79E0042DD87 /* HMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUser.h; sourceTree = "<group>"; };
+		F760BF3C1B73D79E0042DD87 /* HMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMUser.m; sourceTree = "<group>"; };
+		F760BF3E1B754BB50042DD87 /* HMProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProfileViewController.h; sourceTree = "<group>"; };
+		F760BF3F1B754BB50042DD87 /* HMProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProfileViewController.m; sourceTree = "<group>"; };
+		F760BF411B7566CA0042DD87 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		F760BF421B7566CA0042DD87 /* Video.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Video.m; sourceTree = "<group>"; };
+		F760BF441B7567630042DD87 /* VideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoCell.h; sourceTree = "<group>"; };
+		F760BF451B7567630042DD87 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
+		F760BF471B7570270042DD87 /* HMProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProfileHeaderView.h; sourceTree = "<group>"; };
+		F760BF481B7570270042DD87 /* HMProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProfileHeaderView.m; sourceTree = "<group>"; };
 		F76420C51B6EA72B00DF6AAD /* HMCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataHelper.h; sourceTree = "<group>"; };
 		F76420C61B6EA72B00DF6AAD /* HMCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCoreDataHelper.m; sourceTree = "<group>"; };
 		F76420D41B6F3D6400DF6AAD /* HMCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCameraViewController.h; sourceTree = "<group>"; };
@@ -138,9 +147,9 @@
 		F70789AA1B6C697600089777 /* Himachal */ = {
 			isa = PBXGroup;
 			children = (
-				F76420D91B6FED0100DF6AAD /* Views */,
 				F70789AF1B6C697600089777 /* AppDelegate.h */,
 				F70789B01B6C697600089777 /* AppDelegate.m */,
+				F76420D91B6FED0100DF6AAD /* Views */,
 				F7FB3A2A1B6DDF5A001A8557 /* Helpers */,
 				F7FB3A291B6DDF4E001A8557 /* Controllers */,
 				F7FB3A281B6DDF4A001A8557 /* Models */,
@@ -182,8 +191,12 @@
 		F76420D91B6FED0100DF6AAD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F760BF441B7567630042DD87 /* VideoCell.h */,
+				F760BF451B7567630042DD87 /* VideoCell.m */,
 				F76420DA1B6FED1C00DF6AAD /* PBJFocusView.h */,
 				F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */,
+				F760BF471B7570270042DD87 /* HMProfileHeaderView.h */,
+				F760BF481B7570270042DD87 /* HMProfileHeaderView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -191,10 +204,12 @@
 		F7FB3A281B6DDF4A001A8557 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F760BF411B7566CA0042DD87 /* Video.h */,
+				F760BF421B7566CA0042DD87 /* Video.m */,
+				F760BF3B1B73D79E0042DD87 /* HMUser.h */,
+				F760BF3C1B73D79E0042DD87 /* HMUser.m */,
 				F760BF381B72A05D0042DD87 /* HMVideo.h */,
 				F760BF391B72A05D0042DD87 /* HMVideo.m */,
-				F7121D411B714F1800DE335B /* HMUser.h */,
-				F7121D421B714F1800DE335B /* HMUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -208,8 +223,8 @@
 				F70789D21B6C84C100089777 /* HMSignupViewController.m */,
 				F76420D41B6F3D6400DF6AAD /* HMCameraViewController.h */,
 				F76420D51B6F3D6400DF6AAD /* HMCameraViewController.m */,
-				F7121D4B1B72866000DE335B /* HMProfileViewController.h */,
-				F7121D4C1B72866000DE335B /* HMProfileViewController.m */,
+				F760BF3E1B754BB50042DD87 /* HMProfileViewController.h */,
+				F760BF3F1B754BB50042DD87 /* HMProfileViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -363,17 +378,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F72755041B713B25006B0DE8 /* DataModel.xcdatamodeld in Sources */,
-				F7121D4D1B72866000DE335B /* HMProfileViewController.m in Sources */,
 				F70789B41B6C697600089777 /* HMLoginViewController.m in Sources */,
+				F760BF491B7570270042DD87 /* HMProfileHeaderView.m in Sources */,
+				F760BF431B7566CA0042DD87 /* Video.m in Sources */,
 				F70789D31B6C84C100089777 /* HMSignupViewController.m in Sources */,
 				F70789B11B6C697600089777 /* AppDelegate.m in Sources */,
 				F76420DC1B6FED1C00DF6AAD /* PBJFocusView.m in Sources */,
 				F7FB3A301B6DDFCC001A8557 /* NSString+emailValidation.m in Sources */,
+				F760BF3D1B73D79E0042DD87 /* HMUser.m in Sources */,
 				F76420C71B6EA72B00DF6AAD /* HMCoreDataHelper.m in Sources */,
-				F7121D431B714F1800DE335B /* HMUser.m in Sources */,
 				F760BF3A1B72A05D0042DD87 /* HMVideo.m in Sources */,
 				F76420D61B6F3D6400DF6AAD /* HMCameraViewController.m in Sources */,
 				F70789AE1B6C697600089777 /* main.m in Sources */,
+				F760BF461B7567630042DD87 /* VideoCell.m in Sources */,
+				F760BF401B754BB50042DD87 /* HMProfileViewController.m in Sources */,
 				F7FB3A241B6D5778001A8557 /* HMParseAPIHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

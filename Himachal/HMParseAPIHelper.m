@@ -7,6 +7,8 @@
 //
 
 #import "HMParseAPIHelper.h"
+#import <Parse/Parse.h>
+
 
 @implementation HMParseAPIHelper
 
@@ -60,12 +62,12 @@
     NSString *path = videoPath;
     NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
     PFFile *videoFile = [PFFile fileWithName:@"video.mp4" data:data];
-    NSLog(@"the data %@", data);
-    PFObject *userVideo = [PFObject objectWithClassName:@"video"];
-    userVideo[@"videoFile"] = videoFile;
-
+    PFObject *video= [PFObject objectWithClassName:@"video"];
+    PFUser *user = [PFUser currentUser];
+    [video setObject:user forKey:@"createdBy"];
+    video[@"videoFile"] = videoFile;
     
-    [userVideo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    [video saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         if(succeeded) {
             completion(TRUE, nil);
@@ -75,5 +77,22 @@
         }
     }];
 }
+
+
+-(void) getVideos:(void (^)(NSArray * objects, NSError *error)) completion  {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"video"];
+    [query whereKey:@"createdBy" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            completion(objects, nil);
+            NSLog(@"The objects are %@", objects);
+        }
+        else {
+            completion (nil, error);
+        }
+    }];
+}
+
 
 @end

@@ -18,5 +18,6 @@ typedef void(^HMDatabaseManagerCompletionHandler)(BOOL suceeded, NSError *error)
 
 - (void)setupCoreDataStackWithCompletionHandler:(HMDatabaseManagerCompletionHandler)handler;
 - (void)saveDataWithCompletionHandler:(HMDatabaseManagerCompletionHandler)handler;
+-(BOOL) checkifVideosExist;
 
 @end

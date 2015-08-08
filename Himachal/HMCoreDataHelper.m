@@ -185,4 +185,17 @@ typedef NS_ENUM(NSUInteger, OTSError) {
     }];
 }
 
+-(BOOL) checkifVideosExist {
+    
+    NSManagedObjectContext *moc = [self mainThreadManagedObjectContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"HMVideo"];
+    NSError *error = nil;
+    NSArray *fetchedObjects = [moc executeFetchRequest:fetchRequest error:&error];
+    if(fetchedObjects == nil || [fetchedObjects count] == 0) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
+
 @end

@@ -2,7 +2,7 @@
 //  HMUser.h
 //  
 //
-//  Created by Siraj Ravel on 8/4/15.
+//  Created by Siraj Ravel on 8/6/15.
 //
 //
 
@@ -16,9 +16,10 @@
 @property (nonatomic, retain) NSString * facebookID;
 @property (nonatomic, retain) NSNumber * follower_count;
 @property (nonatomic, retain) NSNumber * following_count;
+@property (nonatomic, retain) NSData * profilePicture;
 @property (nonatomic, retain) NSString * userID;
 @property (nonatomic, retain) NSString * username;
-@property (nonatomic, retain) NSData * profilePicture;
 @property (nonatomic, retain) NSNumber * videoCount;
+@property (nonatomic, retain) NSString * password;
 
 @end

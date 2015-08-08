@@ -15,6 +15,7 @@
 #import "HMCoreDataHelper.h"
 #import "HMCameraViewController.h"
 #import "HMProfileViewController.h"
+#import "HMUser.h"
 
 
 
@@ -33,7 +34,7 @@
 
 @implementation UINavigationBar (custom)
 
-- (UINavigationItem *)popNavigationItemAnimated:(BOOL)animated;
+- (UINavigationItem *)popNavigationItemAnimated:(BOOL)animated
 {
     
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
@@ -53,9 +54,7 @@
    [self setupCoreData:^(BOOL succeeded) {
        if(succeeded) {
            BOOL isAuthenticated = [self checkifUserHasLoggedinPreviously];
-           if(isAuthenticated) {
-               [self showNavController];
-           } else {
+           if(!isAuthenticated) {
                [self drawLoginUI];
            }
        }
@@ -256,26 +255,32 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a password at least 5 characters long" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [alert show];
     } else {
-        
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
-        [[HMParseAPIHelper sharedInstance] loginUser:self.username passwordString:self.password completion:^(PFUser *user, NSError *error) {
-            
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            if(!error) {
-                [self showNavController];
-                NSLog(@"The user data is %@", user);
-                [self saveUserDatawithUsername:user.username andEmail:user.email];
-            }
-            else {
-                NSLog(@"The error is %@", [error localizedDescription]);
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alert show];
-            }
-        }];
-        
+        [self login];
     
     }
+    
+}
+
+-(void) login {
+    
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [[HMParseAPIHelper sharedInstance] loginUser:self.username passwordString:self.password completion:^(PFUser *user, NSError *error) {
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        if(!error) {
+            [self showNavController];
+            NSLog(@"The user data is %@", user);
+            [self saveUserDatawithUsername:user.username andPassword:self.password andEmail:user.email];
+        }
+        else {
+            NSLog(@"The error is %@", [error localizedDescription]);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+    }];
+    
     
 }
 
@@ -298,11 +303,12 @@
 }
 
 
-- (void) saveUserDatawithUsername:(NSString*) username andEmail:(NSString*) email {
+- (void) saveUserDatawithUsername:(NSString*) username andPassword:(NSString*) password andEmail:(NSString*) email {
     NSManagedObject *userObject = [[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"HMUser" inManagedObjectContext:[[self databaseManager] mainThreadManagedObjectContext]] insertIntoManagedObjectContext:[[self databaseManager] mainThreadManagedObjectContext]];
     [userObject setValue:username forKey:@"username"];
     [userObject setValue:email forKey:@"email"];
-    
+    [userObject setValue:password forKey:@"password"];
+
     [[self databaseManager] saveDataWithCompletionHandler:^(BOOL suceeded, NSError *error) {
         if (!suceeded) {
             NSLog(@"Core Data save failed.");
@@ -320,9 +326,14 @@
     NSError *error = nil;
     NSArray *fetchedObjects = [moc executeFetchRequest:fetchRequest error:&error];
     if(fetchedObjects == nil || [fetchedObjects count] == 0) {
-        return TRUE;
-    } else {
         return FALSE;
+    } else {
+        
+        HMUser *cachedUser = [fetchedObjects objectAtIndex:0];
+        self.username = cachedUser.username;
+        self.password = cachedUser.password;
+        [self login];
+        return TRUE;
     }
 }
 

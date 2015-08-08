@@ -5,6 +5,7 @@
         <attribute name="facebookID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="follower_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="following_count" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="profilePicture" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,7 +21,7 @@
         <attribute name="videoID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="HMUser" positionX="-45" positionY="54" width="128" height="165"/>
+        <element name="HMUser" positionX="-45" positionY="54" width="128" height="180"/>
         <element name="HMVideo" positionX="-54" positionY="-9" width="128" height="150"/>
     </elements>
 </model>

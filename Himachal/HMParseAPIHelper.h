@@ -22,8 +22,10 @@
 -(void) registerUser:(NSString*) usernameString  passwordString :(NSString *) passwordString  emailString:(NSString *) emailString completion:(void (^)(BOOL finished, NSError *error))completion;
 
 
-//Uploading videos
--(void) uploadVideoAsync:(NSURL *) videoURL completion:(void (^)(BOOL succeeded, NSError *error)) completion;
+//Videos
+-(void) uploadVideoAsync:(NSString *) videoPath completion:(void (^)(BOOL succeeded, NSError *error)) completion;
+
+-(void) getVideos:(void (^)(NSArray * objects, NSError *error)) completion;
 
 @end
 
