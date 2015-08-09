@@ -56,7 +56,7 @@
 
 }
 
--(void) uploadVideoAsync:(NSString *) videoPath completion:(void (^)(BOOL succeeded, NSError *error)) completion {
+-(void) uploadVideoAsync:(NSString *) videoPath withCaption:(NSString*) caption completion:(void (^)(BOOL succeeded, NSError *error)) completion {
     //save video to parse
     
     NSString *path = videoPath;
@@ -66,6 +66,7 @@
     PFUser *user = [PFUser currentUser];
     [video setObject:user forKey:@"createdBy"];
     video[@"videoFile"] = videoFile;
+    video[@"caption"] = caption;
     
     [video saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         

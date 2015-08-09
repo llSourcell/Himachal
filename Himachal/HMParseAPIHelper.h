@@ -23,7 +23,7 @@
 
 
 //Videos
--(void) uploadVideoAsync:(NSString *) videoPath completion:(void (^)(BOOL succeeded, NSError *error)) completion;
+-(void) uploadVideoAsync:(NSString *) videoPath withCaption:(NSString *) caption completion:(void (^)(BOOL succeeded, NSError *error)) completion;
 
 -(void) getVideos:(void (^)(NSArray * objects, NSError *error)) completion;
 

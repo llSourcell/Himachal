@@ -7,6 +7,7 @@
 //
 
 #import "HMDiscoveryViewController.h"
+#import "HMDiscoveryHeaderView.h"
 
 @interface HMDiscoveryViewController ()
 
@@ -14,8 +15,38 @@
 
 @implementation HMDiscoveryViewController
 
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom the table
+        
+        // The className to query on
+        self.parseClassName = @"User";
+        
+        // The key of the PFObject to display in the label of the default cell style
+        self.textKey = @"text";
+        
+        // The title for this table in the Navigation Controller.
+        self.title = @"myvideos";
+        
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = YES;
+        
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = YES;
+        
+        // The number of objects to show per page
+        self.objectsPerPage = 5;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    HMDiscoveryHeaderView *headerView = [[HMDiscoveryHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+    
+    self.tableView.tableHeaderView = headerView;
     // Do any additional setup after loading the view.
 }
 
@@ -23,6 +54,73 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+#pragma mark - Parse
+
+- (void)objectsDidLoad:(NSError *)error {
+    [super objectsDidLoad:error];
+    
+    // This method is called every time objects are loaded from Parse via the PFQuery
+}
+
+- (void)objectsWillLoad {
+    [super objectsWillLoad];
+    
+    // This method is called before a PFQuery is fired to get more objects
+}
+
+
+// Override to customize what kind of query to perform on the class. The default is to query for
+// all objects ordered by createdAt descending.
+- (PFQuery *)queryForTable {
+    PFQuery *query = [PFUser query];
+   // PFQuery *query = [PFQuery queryWithClassName:@"video" predicate:<#(nullable NSPredicate *)#>]
+    // If no objects are loaded in memory, we look to the cache first to fill the table
+    // and then subsequently do a query against the network.
+    if ([self.objects count] == 0) {
+        query.cachePolicy = kPFCachePolicyCacheThenNetwork;
+    }
+    
+    [query orderByDescending:@"updatedAt"];
+    
+    return query;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    return 50;
+}
+
+
+#pragma mark tableview
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    NSString *username = [object objectForKey:@"username"];
+    
+
+
+    
+    cell.textLabel.text = username ;
+    
+  
+    
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
 
 /*
 #pragma mark - Navigation

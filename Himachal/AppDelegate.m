@@ -37,6 +37,8 @@
     [Parse setApplicationId:@"ASQkAc72tQ1inItUqx7siwf0Y6UDKEYcdkMYM5MH"
                   clientKey:@"dZOTmmljQFtqkeENa1PH1DcdeXdliT13RV9axIVC"];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    [PFUser enableRevocableSessionInBackground];
 
     return YES;
 }

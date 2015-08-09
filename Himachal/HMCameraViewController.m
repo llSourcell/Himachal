@@ -22,6 +22,9 @@
 @property (nonatomic, strong) NSURL *myURL;
 @property (nonatomic, assign) BOOL isRecording;
 @property (strong, nonatomic) HMCoreDataHelper *databaseManager;
+@property (nonatomic, strong)NSString *caption;
+@property (nonatomic, strong)NSString *videoPath;
+
 
 
 @end
@@ -227,15 +230,34 @@
     
     self.currentVideo = videoDict;
     
-    NSString *videoPath = [self.currentVideo  objectForKey:PBJVisionVideoPathKey];
-    self.myURL = [NSURL URLWithString:videoPath];
+    self.videoPath = [self.currentVideo objectForKey:PBJVisionVideoPathKey];
+    self.myURL = [NSURL URLWithString:self.videoPath];
+
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:@"Input a caption" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    
+    [alert show];
+ 
+
+ 
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    self.caption =[[alertView textFieldAtIndex:0] text];
+    [self uploadVideo];
+    
+    
+}
+
+-(void) uploadVideo {
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
- 
-    [[HMParseAPIHelper sharedInstance] uploadVideoAsync:videoPath completion:^(BOOL succeeded, NSError *error) {
+    [[HMParseAPIHelper sharedInstance] uploadVideoAsync:self.videoPath withCaption:self.caption completion:^(BOOL succeeded, NSError *error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if(succeeded) {
-          
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You've uploaded your video" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
         }
@@ -245,18 +267,8 @@
             
         }
     }];
- 
     
-
-//    [self.assetLibrary writeVideoAtPathToSavedPhotosAlbum:[NSURL URLWithString:videoPath] completionBlock:^(NSURL *assetURL, NSError *error1) {
-//        if(error1) {
-//            NSLog(@"error %@", error1);
-//        }
-//   
-//        
-//        
-//        
-//    }];
+    
 }
 
 

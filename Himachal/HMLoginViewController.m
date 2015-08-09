@@ -15,6 +15,7 @@
 #import "HMCoreDataHelper.h"
 #import "HMCameraViewController.h"
 #import "HMProfileViewController.h"
+#import "HMDiscoveryViewController.h"
 #import "HMUser.h"
 
 
@@ -350,11 +351,11 @@
     //%%% DEMO CONTROLLERS
     HMCameraViewController *demo = [[HMCameraViewController alloc]init];
     HMProfileViewController *demo2 = [[HMProfileViewController alloc]init];
-    UIViewController *demo3 = [[UIViewController alloc]init];
+    HMDiscoveryViewController *demo3 = [[HMDiscoveryViewController alloc]init];
     UIViewController *demo4 = [[UIViewController alloc]init];
     demo.view.backgroundColor = [UIColor clearColor];
     demo2.view.backgroundColor = [UIColor whiteColor];
-    demo3.view.backgroundColor = [UIColor grayColor];
+   // demo3.view.backgroundColor = [UIColor grayColor];
     demo4.view.backgroundColor = [UIColor orangeColor];
     [navigationController.viewControllerArray addObjectsFromArray:@[demo,demo2,demo3,demo4]];
     

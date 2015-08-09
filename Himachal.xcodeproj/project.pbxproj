@@ -23,6 +23,8 @@
 		F760BF431B7566CA0042DD87 /* Video.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF421B7566CA0042DD87 /* Video.m */; };
 		F760BF461B7567630042DD87 /* VideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF451B7567630042DD87 /* VideoCell.m */; };
 		F760BF491B7570270042DD87 /* HMProfileHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF481B7570270042DD87 /* HMProfileHeaderView.m */; };
+		F760BF521B76D1020042DD87 /* HMDiscoveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF511B76D1020042DD87 /* HMDiscoveryViewController.m */; };
+		F760BF551B76D4DE0042DD87 /* HMDiscoveryHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF541B76D4DE0042DD87 /* HMDiscoveryHeaderView.m */; };
 		F76420C71B6EA72B00DF6AAD /* HMCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420C61B6EA72B00DF6AAD /* HMCoreDataHelper.m */; };
 		F76420D61B6F3D6400DF6AAD /* HMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420D51B6F3D6400DF6AAD /* HMCameraViewController.m */; };
 		F76420D81B6FE18700DF6AAD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76420D71B6FE18700DF6AAD /* AssetsLibrary.framework */; };
@@ -73,6 +75,10 @@
 		F760BF451B7567630042DD87 /* VideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoCell.m; sourceTree = "<group>"; };
 		F760BF471B7570270042DD87 /* HMProfileHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProfileHeaderView.h; sourceTree = "<group>"; };
 		F760BF481B7570270042DD87 /* HMProfileHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProfileHeaderView.m; sourceTree = "<group>"; };
+		F760BF501B76D1020042DD87 /* HMDiscoveryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDiscoveryViewController.h; sourceTree = "<group>"; };
+		F760BF511B76D1020042DD87 /* HMDiscoveryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDiscoveryViewController.m; sourceTree = "<group>"; };
+		F760BF531B76D4DE0042DD87 /* HMDiscoveryHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMDiscoveryHeaderView.h; sourceTree = "<group>"; };
+		F760BF541B76D4DE0042DD87 /* HMDiscoveryHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMDiscoveryHeaderView.m; sourceTree = "<group>"; };
 		F76420C51B6EA72B00DF6AAD /* HMCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoreDataHelper.h; sourceTree = "<group>"; };
 		F76420C61B6EA72B00DF6AAD /* HMCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCoreDataHelper.m; sourceTree = "<group>"; };
 		F76420D41B6F3D6400DF6AAD /* HMCameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCameraViewController.h; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 				F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */,
 				F760BF471B7570270042DD87 /* HMProfileHeaderView.h */,
 				F760BF481B7570270042DD87 /* HMProfileHeaderView.m */,
+				F760BF531B76D4DE0042DD87 /* HMDiscoveryHeaderView.h */,
+				F760BF541B76D4DE0042DD87 /* HMDiscoveryHeaderView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -225,6 +233,8 @@
 				F76420D51B6F3D6400DF6AAD /* HMCameraViewController.m */,
 				F760BF3E1B754BB50042DD87 /* HMProfileViewController.h */,
 				F760BF3F1B754BB50042DD87 /* HMProfileViewController.m */,
+				F760BF501B76D1020042DD87 /* HMDiscoveryViewController.h */,
+				F760BF511B76D1020042DD87 /* HMDiscoveryViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -378,11 +388,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F72755041B713B25006B0DE8 /* DataModel.xcdatamodeld in Sources */,
+				F760BF551B76D4DE0042DD87 /* HMDiscoveryHeaderView.m in Sources */,
 				F70789B41B6C697600089777 /* HMLoginViewController.m in Sources */,
 				F760BF491B7570270042DD87 /* HMProfileHeaderView.m in Sources */,
 				F760BF431B7566CA0042DD87 /* Video.m in Sources */,
 				F70789D31B6C84C100089777 /* HMSignupViewController.m in Sources */,
 				F70789B11B6C697600089777 /* AppDelegate.m in Sources */,
+				F760BF521B76D1020042DD87 /* HMDiscoveryViewController.m in Sources */,
 				F76420DC1B6FED1C00DF6AAD /* PBJFocusView.m in Sources */,
 				F7FB3A301B6DDFCC001A8557 /* NSString+emailValidation.m in Sources */,
 				F760BF3D1B73D79E0042DD87 /* HMUser.m in Sources */,
