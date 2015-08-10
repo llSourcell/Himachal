@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HMDiscoveryHeaderView : UIView
+@protocol HMDiscoveryHeaderDelegate <NSObject>
+
+- (void)didPressSearchinHeaderSearchBar:(UISearchBar *)searchBar;
+@end
+
+@interface HMDiscoveryHeaderView : UIView <UISearchBarDelegate, HMDiscoveryHeaderDelegate>
+
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) id <HMDiscoveryHeaderDelegate> delegate;
 
 @end

@@ -10,7 +10,7 @@
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
 
-@interface HMDiscoveryViewController : PFQueryTableViewController
+@interface HMDiscoveryViewController : PFQueryTableViewController 
 
 @end
 

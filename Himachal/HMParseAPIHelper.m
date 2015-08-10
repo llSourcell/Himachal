@@ -58,7 +58,7 @@
 
 -(void) uploadVideoAsync:(NSString *) videoPath withCaption:(NSString*) caption completion:(void (^)(BOOL succeeded, NSError *error)) completion {
     //save video to parse
-    
+    //TODO turn caption into array and push
     NSString *path = videoPath;
     NSData *data = [[NSFileManager defaultManager] contentsAtPath:path];
     PFFile *videoFile = [PFFile fileWithName:@"video.mp4" data:data];
@@ -66,7 +66,8 @@
     PFUser *user = [PFUser currentUser];
     [video setObject:user forKey:@"createdBy"];
     video[@"videoFile"] = videoFile;
-    video[@"caption"] = caption;
+    NSArray *captionArr = [caption componentsSeparatedByString:@" "];
+    video[@"caption"] = captionArr;
     
     [video saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         

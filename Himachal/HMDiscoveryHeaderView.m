@@ -7,16 +7,12 @@
 //
 
 #import "HMDiscoveryHeaderView.h"
+#import "HMDiscoveryViewController.h"
 
 @implementation HMDiscoveryHeaderView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+#pragma mark UI drawing
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -32,9 +28,9 @@
 }
 
 - (void)layoutSubviews {
-    
-    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(20, 20, 250, 50)];
-    //button.backgroundColor = [UIColor blackColor];
+
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(20, 20, 250, 50)];
+    self.searchBar.delegate = self;
     
     UIButton *userButton = [[UIButton alloc] initWithFrame:CGRectMake(20,70,125,50)];
     userButton.backgroundColor = [UIColor greenColor];
@@ -48,12 +44,13 @@
     videoButton.titleLabel.textColor = [UIColor greenColor];
     [videoButton addTarget:self action:@selector(showVideos) forControlEvents:UIControlEventTouchUpInside];
 
-
-    
-    searchBar.text = @"LOL";
-    [self addSubview:searchBar];
+    [self addSubview:self.searchBar];
     [self addSubview:userButton];
     [self addSubview:videoButton];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [self.delegate didPressSearchinHeaderSearchBar:searchBar];
 }
 
 -(void) showUsers {

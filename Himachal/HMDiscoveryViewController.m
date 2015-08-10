@@ -9,7 +9,10 @@
 #import "HMDiscoveryViewController.h"
 #import "HMDiscoveryHeaderView.h"
 
-@interface HMDiscoveryViewController ()
+@interface HMDiscoveryViewController () <HMDiscoveryHeaderDelegate>
+
+@property (nonatomic, strong) HMDiscoveryHeaderView *headerView;
+
 
 @end
 
@@ -42,11 +45,15 @@
     return self;
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    HMDiscoveryHeaderView *headerView = [[HMDiscoveryHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+    self.headerView = [[HMDiscoveryHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
     
-    self.tableView.tableHeaderView = headerView;
+    self.headerView.delegate = self;
+
+    [self.tableView setTableHeaderView:self.headerView];
+    //self.tableView.tableHeaderView = headerView;
     // Do any additional setup after loading the view.
 }
 
@@ -54,6 +61,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+
+- (void) didPressSearchinHeaderSearchBar:(UISearchBar *)headerSearchBar {
+    
+    NSLog(@"here its %@", headerSearchBar.text);
+
+}
+
+
 
 
 #pragma mark - Parse
@@ -74,8 +93,10 @@
 // Override to customize what kind of query to perform on the class. The default is to query for
 // all objects ordered by createdAt descending.
 - (PFQuery *)queryForTable {
-    PFQuery *query = [PFUser query];
-   // PFQuery *query = [PFQuery queryWithClassName:@"video" predicate:<#(nullable NSPredicate *)#>]
+   // PFQuery *query = [PFUser query];
+
+    PFQuery *query = [PFQuery queryWithClassName:@"video"];
+    [query whereKey:@"caption" equalTo:@"my"];
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
     if ([self.objects count] == 0) {
@@ -101,12 +122,15 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSString *username = [object objectForKey:@"username"];
-    
-
-
-    
+    //if user
+    NSString *username = [object objectForKey:@"test"];
     cell.textLabel.text = username ;
+
+    //if video
+    //NSDate *test = object.updatedAt;
+
+
+    
     
   
     
