@@ -11,9 +11,11 @@
 @protocol HMDiscoveryHeaderDelegate <NSObject>
 
 - (void)didPressSearchinHeaderSearchBar:(UISearchBar *)searchBar;
+- (void)didPressUserButton;
+- (void)didPressVideoButton;
 @end
 
-@interface HMDiscoveryHeaderView : UIView <UISearchBarDelegate, HMDiscoveryHeaderDelegate>
+@interface HMDiscoveryHeaderView : UIView <UISearchBarDelegate, HMDiscoveryHeaderDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) id <HMDiscoveryHeaderDelegate> delegate;

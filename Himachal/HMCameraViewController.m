@@ -24,12 +24,15 @@
 @property (strong, nonatomic) HMCoreDataHelper *databaseManager;
 @property (nonatomic, strong)NSString *caption;
 @property (nonatomic, strong)NSString *videoPath;
+@property (nonatomic, strong) UIButton *recordingButton;
 
 
 
 @end
 
 @implementation HMCameraViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -77,7 +80,7 @@
 -(void) drawButtons {
     // snap button to capture image
     UIButton * snapButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    snapButton.frame = CGRectMake(100, 200, 70.0f, 70.0f);
+    snapButton.frame = CGRectMake(125, 400, 70.0f, 70.0f);
     snapButton.clipsToBounds = YES;
     snapButton.layer.cornerRadius = 70.0f / 2.0f;
     snapButton.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -93,13 +96,21 @@
     
     
     UIButton *flipButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    flipButton.frame = CGRectMake(100, 400, 70.0f, 70.0f);
+    flipButton.frame = CGRectMake(260, 10, 50.0f, 50.0f);
     [flipButton addTarget:self action:@selector(_handleFlipButton:) forControlEvents:UIControlEventTouchUpInside];
-    flipButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+   // flipButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [self.view addSubview:flipButton];
-    
+    [flipButton setBackgroundImage:[UIImage imageNamed:@"flipIcon.png"]
+                        forState:UIControlStateNormal];
     [self.view bringSubviewToFront:flipButton];
     
+    
+    self.recordingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.recordingButton.frame = CGRectMake(260, 10, 50.0f, 50.0f);
+    [self.recordingButton addTarget:self action:@selector(_handleFlipButton:) forControlEvents:UIControlEventTouchUpInside];
+    // flipButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+    [self.recordingButton setBackgroundImage:[UIImage imageNamed:@"recording.png"]
+                          forState:UIControlStateNormal];
     
     UIButton *videoPreviewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     videoPreviewButton.frame = CGRectMake(100, 300, 70.0f, 70.0f);
@@ -172,8 +183,13 @@
         [[PBJVision sharedInstance] startVideoCapture];
         self.isRecording = TRUE;
         NSLog(@"started");
+        [self.view addSubview:self.recordingButton];
+        
+        [self.view bringSubviewToFront:self.recordingButton];
+
     } else {
         [[PBJVision sharedInstance] endVideoCapture];
+        [self.recordingButton removeFromSuperview];
         NSLog(@"Stopped");
     }
 }

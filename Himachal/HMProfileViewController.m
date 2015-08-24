@@ -131,6 +131,7 @@
 // all objects ordered by createdAt descending.
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+    [query whereKey:@"createdBy" equalTo:[PFUser currentUser]];
     // If no objects are loaded in memory, we look to the cache first to fill the table
     // and then subsequently do a query against the network.
     if ([self.objects count] == 0) {
@@ -162,7 +163,6 @@
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterFullStyle];
 
-    
     cell.timestamp.text = dateString;
 
     PFFile *file = [object objectForKey:@"videoFile"];

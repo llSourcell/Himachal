@@ -12,9 +12,9 @@
 @interface VideoCell()
 @property (nonatomic, strong) UIView *videoView;
 @property (nonatomic, strong, readwrite) AVPlayer *videoPlayer;
-@property (nonatomic, strong) AVPlayerLayer *videoLayer;
 @property (nonatomic, strong) UIImageView *placeholder;
 @property (nonatomic, strong) UIActivityIndicatorView *indicator;
+@property (nonatomic, strong) UIButton * followButton;
 @end
 
 @implementation VideoCell
@@ -76,6 +76,10 @@
         [self.indicator startAnimating];
     }
     
+}
+
+-(void) dealloc {
+    [self.videoPlayer removeObserver:self forKeyPath:@"status"];
 }
 
 - (void)playerItemDidReachEnd:(NSNotification *)notification {
@@ -157,6 +161,7 @@
         [super touchesBegan:touches withEvent:event];
     }
 }
+
 
 - (void)play
 {

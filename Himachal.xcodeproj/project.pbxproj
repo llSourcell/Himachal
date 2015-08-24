@@ -29,6 +29,7 @@
 		F76420D61B6F3D6400DF6AAD /* HMCameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420D51B6F3D6400DF6AAD /* HMCameraViewController.m */; };
 		F76420D81B6FE18700DF6AAD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76420D71B6FE18700DF6AAD /* AssetsLibrary.framework */; };
 		F76420DC1B6FED1C00DF6AAD /* PBJFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */; };
+		F77A19851B8AA4D000EDA27C /* HMActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77A19841B8AA4D000EDA27C /* HMActivityViewController.m */; };
 		F7FB3A241B6D5778001A8557 /* HMParseAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB3A231B6D5778001A8557 /* HMParseAPIHelper.m */; };
 		F7FB3A301B6DDFCC001A8557 /* NSString+emailValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB3A2F1B6DDFCC001A8557 /* NSString+emailValidation.m */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,8 @@
 		F76420D71B6FE18700DF6AAD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		F76420DA1B6FED1C00DF6AAD /* PBJFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJFocusView.h; sourceTree = "<group>"; };
 		F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJFocusView.m; sourceTree = "<group>"; };
+		F77A19831B8AA4D000EDA27C /* HMActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMActivityViewController.h; path = ../HMActivityViewController.h; sourceTree = "<group>"; };
+		F77A19841B8AA4D000EDA27C /* HMActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMActivityViewController.m; path = ../HMActivityViewController.m; sourceTree = "<group>"; };
 		F7FB3A221B6D5778001A8557 /* HMParseAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMParseAPIHelper.h; sourceTree = "<group>"; };
 		F7FB3A231B6D5778001A8557 /* HMParseAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMParseAPIHelper.m; sourceTree = "<group>"; };
 		F7FB3A2E1B6DDFCC001A8557 /* NSString+emailValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+emailValidation.h"; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				F760BF3F1B754BB50042DD87 /* HMProfileViewController.m */,
 				F760BF501B76D1020042DD87 /* HMDiscoveryViewController.h */,
 				F760BF511B76D1020042DD87 /* HMDiscoveryViewController.m */,
+				F77A19831B8AA4D000EDA27C /* HMActivityViewController.h */,
+				F77A19841B8AA4D000EDA27C /* HMActivityViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -393,6 +398,7 @@
 				F760BF491B7570270042DD87 /* HMProfileHeaderView.m in Sources */,
 				F760BF431B7566CA0042DD87 /* Video.m in Sources */,
 				F70789D31B6C84C100089777 /* HMSignupViewController.m in Sources */,
+				F77A19851B8AA4D000EDA27C /* HMActivityViewController.m in Sources */,
 				F70789B11B6C697600089777 /* AppDelegate.m in Sources */,
 				F760BF521B76D1020042DD87 /* HMDiscoveryViewController.m in Sources */,
 				F76420DC1B6FED1C00DF6AAD /* PBJFocusView.m in Sources */,

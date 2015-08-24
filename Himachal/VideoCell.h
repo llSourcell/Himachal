@@ -22,10 +22,14 @@
 @property (nonatomic, strong, readonly) AVPlayer *videoPlayer;
 @property (nonatomic, weak) id<VideoCellDelegate>delegate;
 @property (nonatomic, strong) UILabel *timestamp;
+@property (nonatomic, strong) AVPlayerLayer *videoLayer;
+
 
 
 - (void)setVideo:(Video *)video;
 + (CGFloat)heightForCell;
+-(void) destroy;
+-(void) addButtonToCell;
 
 - (void)play;
 - (void)pause;

@@ -52,12 +52,19 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self.delegate didPressSearchinHeaderSearchBar:searchBar];
 }
+- (void)searchBarTextDidEndEditing:(UISearchBar *)aSearchBar {
+
+}
+
+
 
 -(void) showUsers {
+    [self.delegate didPressUserButton];
     NSLog(@"show users");
 }
 
 -(void) showVideos {
+    [self.delegate didPressVideoButton];
     NSLog(@"show videos");
 }
 
