@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AwesomeTextField.h"
 
 @interface HMSignupViewController : UIViewController <UITextFieldDelegate>
 
-@property (nonatomic, strong) UITextField *emailTextField;
-@property (nonatomic, strong) UITextField *usernameTextField;
-@property (nonatomic, strong) UITextField *passwordTextField;
-@property (nonatomic, strong) UITextField *passwordReentryTextField;
+@property (nonatomic, strong) AwesomeTextField *emailTextField;
+@property (nonatomic, strong) AwesomeTextField *usernameTextField;
+@property (nonatomic, strong) AwesomeTextField *passwordTextField;
+@property (nonatomic, strong) AwesomeTextField *passwordReentryTextField;
 @property (nonatomic, strong) UIButton *signupButton;
 
 

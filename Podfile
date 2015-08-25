@@ -9,6 +9,10 @@ pod 'RKSwipeBetweenViewControllers'
 pod 'ComponentKit', '~> 0.12'
 pod 'PBJVision'
 pod 'PBJVideoPlayer'
+pod 'UIImageView-PlayGIF', '~> 1.0.1'
+pod 'CustomIOSAlertView', '~> 0.9.3'
+pod 'RKDropdownAlert'
+
 
 end
 

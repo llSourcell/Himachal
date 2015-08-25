@@ -12,6 +12,7 @@
 #import <Parse/Parse.h>
 #import "MBProgressHUD.h"
 
+
 @import CoreData;
 
 
@@ -25,6 +26,8 @@
 @property (nonatomic, strong)NSString *caption;
 @property (nonatomic, strong)NSString *videoPath;
 @property (nonatomic, strong) UIButton *recordingButton;
+@property (nonatomic, strong) UILabel *recLabel;
+@property (nonatomic, strong) UIButton *recCircle;
 
 
 
@@ -83,7 +86,7 @@
     snapButton.frame = CGRectMake(125, 400, 70.0f, 70.0f);
     snapButton.clipsToBounds = YES;
     snapButton.layer.cornerRadius = 70.0f / 2.0f;
-    snapButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    snapButton.layer.borderColor =  [UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0].CGColor;
     snapButton.layer.borderWidth = 2.0f;
     snapButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     snapButton.layer.rasterizationScale = [UIScreen mainScreen].scale;
@@ -111,16 +114,54 @@
     // flipButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [self.recordingButton setBackgroundImage:[UIImage imageNamed:@"recording.png"]
                           forState:UIControlStateNormal];
+
     
-    UIButton *videoPreviewButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    videoPreviewButton.frame = CGRectMake(100, 300, 70.0f, 70.0f);
-    [videoPreviewButton addTarget:self action:@selector(showVideoPreview) forControlEvents:UIControlEventTouchUpInside];
-    videoPreviewButton.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.5];
-    [self.view addSubview:videoPreviewButton];
-    
-    [self.view bringSubviewToFront:videoPreviewButton];
+
+
 }
 
+-(void) drawRecordingUI {
+    [self.view addSubview:self.recordingButton];
+    [self.view bringSubviewToFront:self.recordingButton];
+    self.recLabel = [[UILabel alloc] initWithFrame:CGRectMake(275, 40, 50.0f, 50.0f)];
+    self.recLabel.text = @"REC";
+    self.recLabel.font = [UIFont fontWithName:@"Thonburi" size:16];
+    self.recLabel.textColor = [UIColor redColor];
+    [self.view addSubview:self.recLabel];
+    [self.view bringSubviewToFront:self.recLabel];
+    self.recCircle = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.recCircle.frame = CGRectMake(260, 60, 10.0f, 10.0f);
+    self.recCircle.clipsToBounds = YES;
+    self.recCircle.layer.cornerRadius = 10.0f / 2.0f;
+    self.recCircle.backgroundColor = [UIColor redColor];
+    self.recCircle.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.recCircle.layer.shouldRasterize = YES;
+    [self.recCircle addTarget:self action:@selector(snapButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.recCircle];
+    
+    [self.view bringSubviewToFront:self.recCircle];
+    
+    [self flashOn:self.recCircle];
+}
+
+
+- (void)flashOff:(UIView *)v
+{
+    [UIView animateWithDuration:.50 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^ {
+        v.alpha = .01;  //don't animate alpha to 0, otherwise you won't be able to interact with it
+    } completion:^(BOOL finished) {
+        [self flashOn:v];
+    }];
+}
+
+- (void)flashOn:(UIView *)v
+{
+    [UIView animateWithDuration:.50 delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^ {
+        v.alpha = 1;
+    } completion:^(BOOL finished) {
+        [self flashOff:v];
+    }];
+}
 
 
 
@@ -132,6 +173,30 @@
     
     // auto focus is occuring, display focus view
     CGPoint point = tapPoint;
+    self.recCircle = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.recCircle.frame = CGRectMake(tapPoint.x, tapPoint.y, 60.0f, 60.0f);
+    self.recCircle.clipsToBounds = YES;
+    self.recCircle.layer.cornerRadius = 60.0f / 2.0f;
+    self.recCircle.backgroundColor = [UIColor colorWithRed:0.00 green:0.40 blue:0.20 alpha:0.5];
+    self.recCircle.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.recCircle.layer.shouldRasterize = YES;
+    [self.recCircle addTarget:self action:@selector(snapButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+
+
+    
+    [self.view addSubview:self.recCircle];
+    
+    [self.view bringSubviewToFront:self.recCircle];
+    
+    [self.recCircle setNeedsDisplay];
+
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.5];
+    [self.recCircle setAlpha:0.0];
+    [UIView commitAnimations];
+    
+  
     
     CGRect focusFrame = self.focusView.frame;
 #if defined(__LP64__) && __LP64__
@@ -183,13 +248,14 @@
         [[PBJVision sharedInstance] startVideoCapture];
         self.isRecording = TRUE;
         NSLog(@"started");
-        [self.view addSubview:self.recordingButton];
-        
-        [self.view bringSubviewToFront:self.recordingButton];
+        [self drawRecordingUI];
 
     } else {
         [[PBJVision sharedInstance] endVideoCapture];
         [self.recordingButton removeFromSuperview];
+        [self.recLabel removeFromSuperview];
+        [self flashOff:self.recCircle];
+        [self.recCircle removeFromSuperview];
         NSLog(@"Stopped");
     }
 }
@@ -211,9 +277,15 @@
         NSLog(@"YO");
     }];
     
-    //    [_videoPlayerController dismissViewControllerAnimated:YES completion:^{
-    //        NSLog(@"YO2");
-    //    }];
+}
+
+- (void) displayContentController: (UIViewController*) content;
+{
+    UIView *lol = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 400)];
+    [self addChildViewController:content];
+    content.view.frame = CGRectMake(0, 0, 300, 300);
+    [self.view addSubview:lol];
+    [content didMoveToParentViewController:self];
 }
 
 #pragma mark - PBJVisionDelegate
@@ -249,42 +321,12 @@
     self.videoPath = [self.currentVideo objectForKey:PBJVisionVideoPathKey];
     self.myURL = [NSURL URLWithString:self.videoPath];
 
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Caption" message:@"Input a caption" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
     
-    [alert show];
- 
+    [self showVideoPreview];
+   
 
  
 
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    self.caption =[[alertView textFieldAtIndex:0] text];
-    [self uploadVideo];
-    
-    
-}
-
--(void) uploadVideo {
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [[HMParseAPIHelper sharedInstance] uploadVideoAsync:self.videoPath withCaption:self.caption completion:^(BOOL succeeded, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if(succeeded) {
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You've uploaded your video" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-        }
-        else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success" message:@"You've uploaded your video" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
-            
-        }
-    }];
-    
-    
 }
 
 

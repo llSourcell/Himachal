@@ -17,6 +17,11 @@
 		F70789C81B6C697600089777 /* HimachalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789C71B6C697600089777 /* HimachalTests.m */; };
 		F70789D31B6C84C100089777 /* HMSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F70789D21B6C84C100089777 /* HMSignupViewController.m */; };
 		F72755041B713B25006B0DE8 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F72755021B713B25006B0DE8 /* DataModel.xcdatamodeld */; };
+		F747D5731B8C3C1800C8120C /* HMAppConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F747D5721B8C3C1800C8120C /* HMAppConstants.m */; };
+		F747D5751B8CE79500C8120C /* snow.gif in Resources */ = {isa = PBXBuildFile; fileRef = F747D5741B8CE79500C8120C /* snow.gif */; };
+		F747D5781B8CEADA00C8120C /* AwesomeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F747D5771B8CEADA00C8120C /* AwesomeTextField.m */; };
+		F747D57A1B8CED6C00C8120C /* himalayas.gif in Resources */ = {isa = PBXBuildFile; fileRef = F747D5791B8CED6C00C8120C /* himalayas.gif */; };
+		F747D57C1B8CEE6E00C8120C /* snowingmountain1.gif in Resources */ = {isa = PBXBuildFile; fileRef = F747D57B1B8CEE6E00C8120C /* snowingmountain1.gif */; };
 		F760BF3A1B72A05D0042DD87 /* HMVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF391B72A05D0042DD87 /* HMVideo.m */; };
 		F760BF3D1B73D79E0042DD87 /* HMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF3C1B73D79E0042DD87 /* HMUser.m */; };
 		F760BF401B754BB50042DD87 /* HMProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F760BF3F1B754BB50042DD87 /* HMProfileViewController.m */; };
@@ -30,6 +35,7 @@
 		F76420D81B6FE18700DF6AAD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76420D71B6FE18700DF6AAD /* AssetsLibrary.framework */; };
 		F76420DC1B6FED1C00DF6AAD /* PBJFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */; };
 		F77A19851B8AA4D000EDA27C /* HMActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F77A19841B8AA4D000EDA27C /* HMActivityViewController.m */; };
+		F77A19891B8BDF5200EDA27C /* loginbackground.gif in Resources */ = {isa = PBXBuildFile; fileRef = F77A19881B8BDF5200EDA27C /* loginbackground.gif */; };
 		F7FB3A241B6D5778001A8557 /* HMParseAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB3A231B6D5778001A8557 /* HMParseAPIHelper.m */; };
 		F7FB3A301B6DDFCC001A8557 /* NSString+emailValidation.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FB3A2F1B6DDFCC001A8557 /* NSString+emailValidation.m */; };
 /* End PBXBuildFile section */
@@ -64,6 +70,13 @@
 		F70789D11B6C84C100089777 /* HMSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMSignupViewController.h; sourceTree = "<group>"; };
 		F70789D21B6C84C100089777 /* HMSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMSignupViewController.m; sourceTree = "<group>"; };
 		F72755031B713B25006B0DE8 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		F747D5711B8C3C1800C8120C /* HMAppConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMAppConstants.h; sourceTree = "<group>"; };
+		F747D5721B8C3C1800C8120C /* HMAppConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMAppConstants.m; sourceTree = "<group>"; };
+		F747D5741B8CE79500C8120C /* snow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = snow.gif; sourceTree = "<group>"; };
+		F747D5761B8CEADA00C8120C /* AwesomeTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwesomeTextField.h; sourceTree = "<group>"; };
+		F747D5771B8CEADA00C8120C /* AwesomeTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AwesomeTextField.m; sourceTree = "<group>"; };
+		F747D5791B8CED6C00C8120C /* himalayas.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = himalayas.gif; sourceTree = "<group>"; };
+		F747D57B1B8CEE6E00C8120C /* snowingmountain1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = snowingmountain1.gif; sourceTree = "<group>"; };
 		F760BF381B72A05D0042DD87 /* HMVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMVideo.h; sourceTree = "<group>"; };
 		F760BF391B72A05D0042DD87 /* HMVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMVideo.m; sourceTree = "<group>"; };
 		F760BF3B1B73D79E0042DD87 /* HMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMUser.h; sourceTree = "<group>"; };
@@ -89,6 +102,7 @@
 		F76420DB1B6FED1C00DF6AAD /* PBJFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJFocusView.m; sourceTree = "<group>"; };
 		F77A19831B8AA4D000EDA27C /* HMActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HMActivityViewController.h; path = ../HMActivityViewController.h; sourceTree = "<group>"; };
 		F77A19841B8AA4D000EDA27C /* HMActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HMActivityViewController.m; path = ../HMActivityViewController.m; sourceTree = "<group>"; };
+		F77A19881B8BDF5200EDA27C /* loginbackground.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loginbackground.gif; sourceTree = "<group>"; };
 		F7FB3A221B6D5778001A8557 /* HMParseAPIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMParseAPIHelper.h; sourceTree = "<group>"; };
 		F7FB3A231B6D5778001A8557 /* HMParseAPIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMParseAPIHelper.m; sourceTree = "<group>"; };
 		F7FB3A2E1B6DDFCC001A8557 /* NSString+emailValidation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+emailValidation.h"; sourceTree = "<group>"; };
@@ -171,6 +185,10 @@
 		F70789AB1B6C697600089777 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F747D57B1B8CEE6E00C8120C /* snowingmountain1.gif */,
+				F747D5791B8CED6C00C8120C /* himalayas.gif */,
+				F747D5741B8CE79500C8120C /* snow.gif */,
+				F77A19881B8BDF5200EDA27C /* loginbackground.gif */,
 				F70789BA1B6C697600089777 /* LaunchScreen.xib */,
 				F70789B51B6C697600089777 /* Main.storyboard */,
 				F70789AC1B6C697600089777 /* Info.plist */,
@@ -247,12 +265,16 @@
 		F7FB3A2A1B6DDF5A001A8557 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F747D5761B8CEADA00C8120C /* AwesomeTextField.h */,
+				F747D5771B8CEADA00C8120C /* AwesomeTextField.m */,
 				F7FB3A221B6D5778001A8557 /* HMParseAPIHelper.h */,
 				F7FB3A231B6D5778001A8557 /* HMParseAPIHelper.m */,
 				F76420C51B6EA72B00DF6AAD /* HMCoreDataHelper.h */,
 				F76420C61B6EA72B00DF6AAD /* HMCoreDataHelper.m */,
 				F7FB3A2E1B6DDFCC001A8557 /* NSString+emailValidation.h */,
 				F7FB3A2F1B6DDFCC001A8557 /* NSString+emailValidation.m */,
+				F747D5711B8C3C1800C8120C /* HMAppConstants.h */,
+				F747D5721B8C3C1800C8120C /* HMAppConstants.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -339,8 +361,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F747D57A1B8CED6C00C8120C /* himalayas.gif in Resources */,
+				F77A19891B8BDF5200EDA27C /* loginbackground.gif in Resources */,
 				F70789B71B6C697600089777 /* Main.storyboard in Resources */,
+				F747D5751B8CE79500C8120C /* snow.gif in Resources */,
 				F70789BC1B6C697600089777 /* LaunchScreen.xib in Resources */,
+				F747D57C1B8CEE6E00C8120C /* snowingmountain1.gif in Resources */,
 				F70789B91B6C697600089777 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,10 +420,12 @@
 			files = (
 				F72755041B713B25006B0DE8 /* DataModel.xcdatamodeld in Sources */,
 				F760BF551B76D4DE0042DD87 /* HMDiscoveryHeaderView.m in Sources */,
+				F747D5731B8C3C1800C8120C /* HMAppConstants.m in Sources */,
 				F70789B41B6C697600089777 /* HMLoginViewController.m in Sources */,
 				F760BF491B7570270042DD87 /* HMProfileHeaderView.m in Sources */,
 				F760BF431B7566CA0042DD87 /* Video.m in Sources */,
 				F70789D31B6C84C100089777 /* HMSignupViewController.m in Sources */,
+				F747D5781B8CEADA00C8120C /* AwesomeTextField.m in Sources */,
 				F77A19851B8AA4D000EDA27C /* HMActivityViewController.m in Sources */,
 				F70789B11B6C697600089777 /* AppDelegate.m in Sources */,
 				F760BF521B76D1020042DD87 /* HMDiscoveryViewController.m in Sources */,

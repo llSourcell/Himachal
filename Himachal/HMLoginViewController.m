@@ -18,6 +18,9 @@
 #import "HMDiscoveryViewController.h"
 #import "HMActivityViewController.h"
 #import "HMUser.h"
+#import "UIImageView+PlayGIF.h"
+#import "RKDropdownAlert.h"
+
 
 
 
@@ -29,6 +32,9 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
 @property (strong, nonatomic) HMCoreDataHelper *databaseManager;
+@property (assign, nonatomic) CGFloat screenWidth;
+@property (assign, nonatomic) CGFloat screenHeight;
+
 
 
 
@@ -52,6 +58,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    self.screenWidth = screenRect.size.width;
+    self.screenHeight = screenRect.size.height;
+
     //setup
    [self setupCoreData:^(BOOL succeeded) {
        if(succeeded) {
@@ -69,6 +81,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.navigationController.navigationBar.hidden = YES;
     [super viewWillAppear:animated];
     
 }
@@ -89,29 +102,60 @@
 #pragma mark draw UI Elements
 
 -(void) drawLoginUI {
-    [self setTextFieldProperties:self.usernameTextField placeholderText:@"enter username" initWithFrame:CGRectMake(30, 200, 250, 40) andTag:(NSInteger) 1 security:FALSE];
-    [self setTextFieldProperties:self.passwordTextField placeholderText:@"enter password" initWithFrame:CGRectMake(30, 250, 250, 40) andTag:(NSInteger) 2 security:TRUE];
+    
+ 
+   
+    
+    
+    [self drawBackgroundGIF];
+    [self setTextFieldProperties:self.usernameTextField placeholderText:@"username" initWithFrame:CGRectMake(35, 300, 250, 60) andTag:(NSInteger) 1 security:FALSE];
+    [self setTextFieldProperties:self.passwordTextField placeholderText:@"password" initWithFrame:CGRectMake(35, 360, 250, 60) andTag:(NSInteger) 2 security:TRUE];
     //NSLog(@"self. %@", self.usernameTextField);
     [self drawLoginButton];
     [self drawSignUpButton];
+    [self drawTitleLogo];
     [self detectTapOutsideTextFields];
     [self setAutoLayoutConstraints];
-  
-  
+    
     
 }
 
+-(void) drawTitleLogo {
+    UILabel *logoLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 100, self.screenWidth, 50)];
+    
+    logoLabel.text = @"Himachal";
+    logoLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:50];
+    logoLabel.textColor = [UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0];
+    [self.view addSubview:logoLabel];
+    [self.view bringSubviewToFront:logoLabel];
+}
 
+
+-(void) drawBackgroundGIF {
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+    UIImageView *gifView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,screenWidth,screenHeight)];
+    //gifView.backgroundColor =[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0];
+    gifView.gifPath = [[NSBundle mainBundle] pathForResource:@"snowingmountain1.gif" ofType:nil];
+    [self.view addSubview:gifView];
+    [gifView startGIF];
+}
 
 
 -(void) setTextFieldProperties: (UITextField *) myField placeholderText :(NSString*) text  initWithFrame: (CGRect) rect andTag:(NSInteger) tag security:(BOOL) isSecure {
-    myField= [[UITextField alloc] initWithFrame:rect];
+    myField= [[AwesomeTextField alloc] initWithFrame:rect];
     //NSLog(@"my field %@", myField);
-    myField.borderStyle = UITextBorderStyleRoundedRect;
+    //myField.leftViewMode =UITextFieldViewModeAlways;
+    //myField.leftView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userIcon"]];
+    //myField.leftView.frame = CGRectMake(5,0,40,25);
+    //myField.borderStyle = UITextBorderStyleBezel;
+    //myField.backgroundColor = [UIColor whiteColor];
     myField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [myField setReturnKeyType:UIReturnKeyDone];
-    myField.font = [UIFont systemFontOfSize:15];
-    myField.placeholder = text;
+    myField.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:17];
+    myField.textColor = [UIColor whiteColor];
+    myField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:text attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor]}];
     myField.secureTextEntry = isSecure;
     myField.autocorrectionType = UITextAutocorrectionTypeNo;
     myField.keyboardType = UIKeyboardTypeDefault;
@@ -125,12 +169,18 @@
                 action:@selector(resignFirstResponder)
       forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.view addSubview:myField ];
+  //  [self.view bringSubviewToFront:myField];
+
 }
 -(void) drawLoginButton {
     
-    self.loginButton = [[UIButton alloc] initWithFrame:CGRectMake(110, 350, 150, 50)];
-    self.loginButton.backgroundColor = [UIColor blackColor];
+
+    
+    self.loginButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.screenHeight-50, self.screenWidth/2, 50)];
+    self.loginButton.backgroundColor = [UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0];
     [self.loginButton setTitle:@"Login" forState:UIControlStateNormal];
+   // [self.loginButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+   // [self.loginButton.layer setBorderWidth:1];
     [self.view addSubview:self.loginButton];
     
     //create event listener
@@ -142,9 +192,15 @@
 
 -(void) drawSignUpButton {
     
-    self.signupButton = [[UIButton alloc] initWithFrame:CGRectMake(110, 450, 150, 50)];
-    self.signupButton.backgroundColor = [UIColor blackColor];
-    [self.signupButton setTitle:@"Signup" forState:UIControlStateNormal];
+
+    
+    self.signupButton = [[UIButton alloc] initWithFrame:CGRectMake(self.screenWidth/2, self.screenHeight-50, self.screenWidth/2, 50)];
+    self.signupButton.backgroundColor = [UIColor whiteColor];
+    [self.signupButton setTitle:@"Signup" forState:UIControlStateNormal ];
+    [self.signupButton setTitleColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] forState:UIControlStateNormal];
+    
+   // [self.signupButton.layer setBorderColor:[[UIColor whiteColor] CGColor]];
+  //  [self.signupButton.layer setBorderWidth:1];
     [self.view addSubview:self.signupButton];
     
     //create event listener
@@ -221,6 +277,15 @@
 
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if(textField.tag == 2) {
+        [self loginTapped];
+    }
+    [textField resignFirstResponder];
+    return NO;
+}
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self animateTextField:textField up:YES];
@@ -250,18 +315,17 @@
     NSLog(@"selff %@", self.usernameTextField);
 
     if([self.username length] < 5) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a username at least 5 characters long" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+        [RKDropdownAlert title:@"Error" message:@"Please enter a username at least 5 characters long" backgroundColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] textColor:[UIColor whiteColor] time:2];
     }
     else if([self.password length] < 5) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Please enter a password at least 5 characters long" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alert show];
+           [RKDropdownAlert title:@"Error" message:@"Please enter a password at least 5 characters long" backgroundColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] textColor:[UIColor whiteColor] time:2];
     } else {
         [self login];
     
     }
     
 }
+
 
 -(void) login {
     
@@ -277,9 +341,11 @@
             [self saveUserDatawithUsername:user.username andPassword:self.password andEmail:user.email];
         }
         else {
-            NSLog(@"The error is %@", [error localizedDescription]);
+//            NSLog(@"The error is %@", [error localizedDescription]);
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
             [alert show];
+                  [RKDropdownAlert title:@"Error" message:[error localizedDescription] backgroundColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] textColor:[UIColor whiteColor] time:2];
+       //     [self showAlertViewWithTitle:@"Error" andMessage:[error localizedDescription]];
         }
     }];
     
@@ -348,7 +414,7 @@
     UIPageViewController *pageController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     
     RKSwipeBetweenViewControllers *navigationController = [[RKSwipeBetweenViewControllers alloc]initWithRootViewController:pageController];
-    navigationController.buttonText = @[@"Camera", @"Profile", @"Discovery", @"Activity"];
+    navigationController.buttonText = @[@"Camera", @"Profile", @"Discover", @"Activity"];
     
     //%%% DEMO CONTROLLERS
     HMCameraViewController *demo = [[HMCameraViewController alloc]init];
@@ -370,6 +436,7 @@
 -(void) signupTapped {
     
     NSLog(@"signup tapped ");
+    self.navigationController.navigationBar.hidden = NO;
     HMSignupViewController* signupView = [[HMSignupViewController alloc] init];
     [self.navigationController pushViewController:signupView animated:NO];
 

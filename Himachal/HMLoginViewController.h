@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AwesomeTextField.h"
+
 
 
 
@@ -16,10 +18,13 @@
 
 
 @property (nonatomic, strong) UITextField *testField;
-@property (nonatomic, strong) UITextField *usernameTextField;
-@property (nonatomic, strong) UITextField *passwordTextField;
+@property (nonatomic, strong) AwesomeTextField *usernameTextField;
+@property (nonatomic, strong) AwesomeTextField *passwordTextField;
 @property (nonatomic, strong) UIButton *loginButton;
 @property (nonatomic, strong) UIButton *signupButton;
+
+
+-(void) drawBackgroundGIF;
 
 
 
