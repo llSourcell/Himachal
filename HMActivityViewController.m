@@ -106,6 +106,22 @@
 
 #pragma mark - Table view data source
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if(scrollView.contentOffset.y <= 10)
+    {
+        //scrollup
+        
+        [self.navigationController setNavigationBarHidden: NO animated:YES];
+    }
+    else if(scrollView.contentOffset.y >= 10)
+    {
+        //scrolldown
+        [self.navigationController setNavigationBarHidden: YES animated:YES];
+    }
+    
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;

@@ -64,7 +64,6 @@
     self.headerView = [[HMDiscoveryHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
     self.headerView.delegate = self;
     [self.tableView setTableHeaderView:self.headerView];
-    //self.tableView.tableHeaderView = headerView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,9 +74,9 @@
 
 #pragma header delegation 
 
-- (void) didPressSearchinHeaderSearchBar:(UISearchBar *)headerSearchBar {
-    [headerSearchBar resignFirstResponder];
-    NSLog(@"here its %@", headerSearchBar.text);
+-(void) didPressSearchinHeader:(UITextField *)textField {
+    [textField resignFirstResponder];
+    NSLog(@"FHUIFHS");
 }
  
 
@@ -146,6 +145,25 @@
 
 
 #pragma mark tableview
+
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if(scrollView.contentOffset.y <= 10)
+    {
+        //scrollup
+        
+        [self.navigationController setNavigationBarHidden: NO animated:YES];
+    }
+    else if(scrollView.contentOffset.y >= 10)
+    {
+        //scrolldown
+        [self.navigationController setNavigationBarHidden: YES animated:YES];
+    }
+    
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     static NSString *CellIdentifier = @"Cell";
     static NSString *CellIdentifier2 = @"Cell2";

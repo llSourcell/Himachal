@@ -10,7 +10,7 @@
 
 @protocol HMDiscoveryHeaderDelegate <NSObject>
 
-- (void)didPressSearchinHeaderSearchBar:(UISearchBar *)searchBar;
+- (void)didPressSearchinHeader:(UITextField *) textField;
 - (void)didPressUserButton;
 - (void)didPressVideoButton;
 @end

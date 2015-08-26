@@ -22,12 +22,11 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (!(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) return nil;
+    
     self.videoView = [[UIView alloc] init];
-    [self.contentView addSubview:self.videoView];
+  [self.contentView addSubview:self.videoView];
     self.videoPlayer = [[AVPlayer alloc] init];
-    self.timestamp = [[UILabel alloc] initWithFrame:CGRectMake(0,0,200,20)];
-  ///  label.text = @"hello";
-    [self.contentView addSubview:self.timestamp];
+
     return self;
 }
 
@@ -36,7 +35,7 @@
 {
     [super layoutSubviews];
     
-    [self.videoView setFrame:CGRectMake(10, 50, self.contentView.frame.size.width - 20, self.contentView.frame.size.width)];
+    [self.videoView setFrame:CGRectMake(0, 0, self.contentView.frame.size.width, 320)];
     [self.videoLayer setFrame:self.videoView.bounds];
     [self.placeholder setFrame:self.videoView.bounds];
     [self.indicator setCenter:self.videoView.center];
@@ -175,7 +174,12 @@
 
 + (CGFloat)heightForCell
 {
-    return [UIScreen mainScreen].bounds.size.width + 50;
+   // return video
+
+    return 320;
+    //return [UIScreen mainScreen].bounds.size.height;
+
+   // return [UIScreen mainScreen].bounds.size.width + 50;
 }
 
 - (UIActivityIndicatorView *)indicator

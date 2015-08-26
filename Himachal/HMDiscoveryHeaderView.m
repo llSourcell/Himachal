@@ -8,6 +8,7 @@
 
 #import "HMDiscoveryHeaderView.h"
 #import "HMDiscoveryViewController.h"
+#import "AwesomeTextField.h"
 
 @implementation HMDiscoveryHeaderView
 
@@ -28,32 +29,59 @@
 }
 
 - (void)layoutSubviews {
-
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(20, 20, 250, 50)];
-    self.searchBar.delegate = self;
     
-    UIButton *userButton = [[UIButton alloc] initWithFrame:CGRectMake(20,70,125,50)];
-    userButton.backgroundColor = [UIColor greenColor];
-    userButton.titleLabel.text = @"usernames";
-    userButton.titleLabel.textColor = [UIColor blackColor];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    
+    
+    AwesomeTextField *myField= [[AwesomeTextField alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 50)];
+myField.placeholder = @"Enter Search Term";
+    myField.placeholderColor = [UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0];
+    myField.underlineColor = [UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0];
+    myField.returnKeyType = UIReturnKeyDone;
+
+   // self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 50)];
+   // self.searchBar.delegate = self;
+    
+    UIButton *userButton = [[UIButton alloc] initWithFrame:CGRectMake(0,50,screenWidth/2,50)];
+    userButton.backgroundColor = [UIColor whiteColor];
+    [userButton.layer setBorderColor:[[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] CGColor]];
+    [userButton.layer setBorderWidth:1];
+    [userButton setTitle:@"Users" forState:UIControlStateNormal];
+    [userButton setTitleColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] forState:UIControlStateNormal];
+   
     [userButton addTarget:self action:@selector(showUsers) forControlEvents:UIControlEventTouchUpInside];
     
-    UIButton *videoButton = [[UIButton alloc] initWithFrame:CGRectMake(145,70,125,50)];
-    videoButton.backgroundColor = [UIColor blackColor];
-    videoButton.titleLabel.text = @"videos";
-    videoButton.titleLabel.textColor = [UIColor greenColor];
+    UIButton *videoButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth/2,50,screenWidth/2,50)];
+     [videoButton.layer setBorderColor:[[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] CGColor]];
+    [videoButton.layer setBorderWidth:1];
+    videoButton.backgroundColor = [UIColor whiteColor];
+    [videoButton setTitle:@"Videos" forState:UIControlStateNormal];
+    [videoButton setTitleColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] forState:UIControlStateNormal];
     [videoButton addTarget:self action:@selector(showVideos) forControlEvents:UIControlEventTouchUpInside];
 
-    [self addSubview:self.searchBar];
+    [self addSubview:myField];
     [self addSubview:userButton];
     [self addSubview:videoButton];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    [self.delegate didPressSearchinHeaderSearchBar:searchBar];
+ //   [self.delegate didPressSearchinHeaderSearchBar:searchBar];
 }
 - (void)searchBarTextDidEndEditing:(UISearchBar *)aSearchBar {
 
+}
+
+- (IBAction)textFieldFinished:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
+-(void) didPressSearchinHeader:(UITextField *)textField {
+    
+[self.delegate didPressSearchinHeader:textField];
+
+    
 }
 
 

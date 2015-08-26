@@ -13,11 +13,12 @@
 #import "HMProfileHeaderView.h"
 
 
-@interface HMProfileViewController () <VideoCellDelegate> {
+@interface HMProfileViewController () <VideoCellDelegate, HMProfileHeaderDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
     
     
 }
 @property (nonatomic, strong, readwrite) AVPlayer *videoPlayer;
+@property (nonatomic, strong) HMProfileHeaderView *headerView;
 
 
 @end
@@ -35,6 +36,7 @@
         
         // The key of the PFObject to display in the label of the default cell style
         self.textKey = @"text";
+        //[self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         
         // The title for this table in the Navigation Controller.
         self.title = @"myvideos";
@@ -56,11 +58,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    HMProfileHeaderView *headerView = [[HMProfileHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+    self.headerView = [[HMProfileHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
 
-    
+    self.headerView.delegate = self;
+
 //
-    self.tableView.tableHeaderView = headerView;
+    self.tableView.tableHeaderView = self.headerView;
 //    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -110,6 +113,48 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+
+#pragma mark custom delegation 
+
+-(void) profilePicButtonPressed {
+    NSLog(@"pressed2");
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+
+
+}
+
+#pragma mark image picker delegation
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    [self.headerView layoutSubviews];
+
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    
+    self.headerView.profilePicButton.imageView.image = chosenImage;
+    NSData *imageData = UIImagePNGRepresentation(chosenImage);
+    PFFile *imageFile = [PFFile fileWithName:@"profile.png" data:imageData];
+    [imageFile saveInBackground];
+    PFUser *user = [PFUser currentUser];
+    [user setObject:imageFile forKey:@"profilePic"];
+    [user saveInBackground];
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
 
 
 #pragma mark - Parse
@@ -176,6 +221,22 @@
 
 
 #pragma mark - Table view delegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if(scrollView.contentOffset.y <= 10)
+    {
+        //scrollup
+        
+        [self.navigationController setNavigationBarHidden: NO animated:YES];
+    }
+    else if(scrollView.contentOffset.y >= 10)
+    {
+        //scrolldown
+        [self.navigationController setNavigationBarHidden: YES animated:YES];
+    }
+    
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
