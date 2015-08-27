@@ -11,6 +11,10 @@
 #import "Video.h"
 #import "VideoCell.h"
 #import <AVFoundation/AVFoundation.h>
+#import "RKDropdownAlert.h"
+
+
+
 
 
 @interface HMDiscoveryViewController () <HMDiscoveryHeaderDelegate, VideoCellDelegate>
@@ -19,6 +23,9 @@
 @property (nonatomic, strong) NSString *userOrVideoString;
 @property (nonatomic, strong, readwrite) AVPlayer *videoPlayer;
 @property (nonatomic, strong) NSMutableArray *myOwnCache;
+@property (nonatomic, strong) NSString *userSearchKeyword;
+@property (nonatomic, strong) NSString *videoSearchKeyword;
+
 @property (assign) int x;
 
 
@@ -51,7 +58,7 @@
         self.paginationEnabled = YES;
 
         // The number of objects to show per page
-        self.objectsPerPage = 5;
+        self.objectsPerPage = 10;
     }
     return self;
 }
@@ -64,6 +71,9 @@
     self.headerView = [[HMDiscoveryHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
     self.headerView.delegate = self;
     [self.tableView setTableHeaderView:self.headerView];
+    
+    self.userOrVideoString = @"User";
+    [self loadObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,13 +82,26 @@
 }
 
 
-#pragma header delegation 
+#pragma header delegation
 
--(void) didPressSearchinHeader:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+
+    
+    if([self.userOrVideoString isEqualToString:@"video"]) {
+        
+        self.videoSearchKeyword = textField.text;
+        [self didPressVideoButton];
+    }
+    else {
+        self.userSearchKeyword = textField.text;
+        [self didPressUserButton];
+    }
     [textField resignFirstResponder];
-    NSLog(@"FHUIFHS");
+    
+    return NO;
+
 }
- 
+
 
 -(void) didPressUserButton {
     self.userOrVideoString = @"User";
@@ -115,10 +138,18 @@
     PFQuery *query;
     if([self.userOrVideoString isEqualToString:@"video"]) {
         query = [PFQuery queryWithClassName:self.userOrVideoString];
+        if(self.videoSearchKeyword) {
+            [query whereKey:@"caption" equalTo:self.videoSearchKeyword];
+        }
     } else if([self.userOrVideoString isEqualToString:@"User"]) {
-         query = [PFUser query];
+        query = [PFUser query];
+        if(self.userSearchKeyword) {
+            [query whereKey:@"username" containsString:self.userSearchKeyword];
+        }
+        
     } else {
         query = [PFQuery queryWithClassName:self.userOrVideoString];
+
     }
     //[query whereKey:@"caption" equalTo:@"my"];
     // If no objects are loaded in memory, we look to the cache first to fill the table
@@ -164,6 +195,8 @@
     
 }
 
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath object:(PFObject *)object {
     static NSString *CellIdentifier = @"Cell";
     static NSString *CellIdentifier2 = @"Cell2";
@@ -195,7 +228,47 @@
                 cell = [[VideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
              //   [cell addButtonToCell];
-            cell.textLabel.text = [object objectForKey:@"username"];
+//            cell.textLabel.frame = CGRectMake(cell.textLabel.frame.origin.x+50, cell.textLabel.frame.origin.y,cell.textLabel.frame.size.width, cell.textLabel.frame.size.height);
+//            cell.textLabel.text = [object objectForKey:@"username"];
+//            [cell.textLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:16]];
+//            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70,15, 30, 30)];
+            label.text = [object objectForKey:@"username"];
+           [label setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:16]];
+            [label sizeToFit];
+
+            [cell.contentView addSubview:label];
+            
+            
+            [cell.contentView.layer setBorderWidth:0.25f];
+            [cell.contentView.layer setBorderColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0].CGColor];
+
+            
+            // snap button to capture image
+            UIButton * profilePic = [UIButton buttonWithType:UIButtonTypeCustom];
+            profilePic.frame = CGRectMake(10, 5, 40, 40);
+            profilePic.clipsToBounds = YES;
+            profilePic.layer.cornerRadius = 40.0f / 2.0f;
+            profilePic.layer.borderColor =  [UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0].CGColor;
+            profilePic.layer.borderWidth = 2.0f;
+            profilePic.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+            profilePic.layer.rasterizationScale = [UIScreen mainScreen].scale;
+            profilePic.layer.shouldRasterize = YES;
+            
+            PFFile * file = [object objectForKey:@"profilePic"];
+            [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if (!error) {
+                    UIImage *image = [UIImage imageWithData:data];
+                    [profilePic setImage:image forState:UIControlStateNormal];
+                } else {
+                    [profilePic setImage:[UIImage imageNamed:@"userIcon"] forState:UIControlStateNormal];
+                }
+            }];
+            [profilePic setImage:[UIImage imageNamed:@"userIcon"] forState:UIControlStateNormal];
+
+            [cell addSubview:profilePic];
+            
+
             return cell;
             
         }
@@ -217,11 +290,12 @@
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         //if doesn't exist.
         if(![usersFollowed containsObject:cell.textLabel.text]) {
-            [usersFollowed addObject:cell.textLabel.text];
+            [usersFollowed addObject:cell.contentView ];
             currentUser[@"usersFollowed"]  = usersFollowed;
             [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     NSLog(@"YAY");
+                    
                 } else {
                     NSLog(@"YAY2");
 
@@ -229,8 +303,8 @@
             }];
             
         } else {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You've already followed this user" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
+            
+            [RKDropdownAlert title:@"Error" message:@"You've already followed this user" backgroundColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] textColor:[UIColor whiteColor] time:2];
             
         }
         
@@ -245,6 +319,10 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
 }
 
+#pragma mark video delegate methods 
 
+- (void)VideoCell:(VideoCell *)cell userDidTapToPlayPause:(AVPlayer *)player {
+    
+}
 
 @end

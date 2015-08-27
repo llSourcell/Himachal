@@ -30,23 +30,36 @@
     return self;
 }
 
+#pragma mark draw UI 
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
+-(void) drawHeartIcon {
+    UIImage *heartIcon = [UIImage imageNamed:@"heart"];
+    UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(20,270,30,30)];
+    image.image = heartIcon;
+    [self addSubview:image];
+    [self bringSubviewToFront:image];
+}
+
+-(void) drawVideo {
     
     [self.videoView setFrame:CGRectMake(0, 0, self.contentView.frame.size.width, 320)];
     [self.videoLayer setFrame:self.videoView.bounds];
     [self.placeholder setFrame:self.videoView.bounds];
     [self.indicator setCenter:self.videoView.center];
+    
+}
+
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self drawVideo];
+    [self drawHeartIcon];
 }
 
 - (void)setVideo:(Video *)video
 {
     NSLog(@"%s : %@", __PRETTY_FUNCTION__, video);
-    
-    //[self generateImageFromAsset:video];
-    //[self.videoView addSubview:self.placeholder];
     
     [self.videoPlayer replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithAsset:video.video]];
     [self.videoPlayer setActionAtItemEnd:AVPlayerActionAtItemEndNone];
@@ -75,15 +88,13 @@
         [self.indicator startAnimating];
     }
     
+    
+   
+    
 }
 
 -(void) dealloc {
     [self.videoPlayer removeObserver:self forKeyPath:@"status"];
-}
-
-- (void)playerItemDidReachEnd:(NSNotification *)notification {
-    AVPlayerItem *p = [notification object];
-    [p seekToTime:kCMTimeZero];
 }
 
 - (void)generateImageFromAsset:(AVAsset *)asset
@@ -102,6 +113,29 @@
         });
     });
 }
+
++ (CGFloat)heightForCell
+{
+    return 320;
+}
+
+- (UIActivityIndicatorView *)indicator
+{
+    if (!_indicator) {
+        _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    }
+    return _indicator;
+}
+
+
+#pragma mark event notification
+
+- (void)playerItemDidReachEnd:(NSNotification *)notification {
+    AVPlayerItem *p = [notification object];
+    [p seekToTime:kCMTimeZero];
+}
+
+
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -162,6 +196,8 @@
 }
 
 
+#pragma mark video actions
+
 - (void)play
 {
     [self.videoPlayer play];
@@ -172,22 +208,5 @@
     [self.videoPlayer pause];
 }
 
-+ (CGFloat)heightForCell
-{
-   // return video
-
-    return 320;
-    //return [UIScreen mainScreen].bounds.size.height;
-
-   // return [UIScreen mainScreen].bounds.size.width + 50;
-}
-
-- (UIActivityIndicatorView *)indicator
-{
-    if (!_indicator) {
-        _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    }
-    return _indicator;
-}
 
 @end

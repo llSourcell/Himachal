@@ -97,4 +97,41 @@
 }
 
 
+-(void) getUserProfilePic:(void (^)(UIImage *, NSError *))completion {
+    
+    PFQuery *pfQuery = [PFUser query];
+    PFUser *user = [PFUser currentUser];
+    
+    [pfQuery whereKey:@"username" equalTo:user.username];
+    pfQuery.limit = 1;
+    
+    [pfQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        PFObject *obj = [objects objectAtIndex:0];
+        PFFile * file = [obj objectForKey:@"profilePic"];
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            if (!error) {
+                UIImage *image = [UIImage imageWithData:data];
+                completion(image, nil);
+            } else {
+                completion(nil, error);
+            }
+        }];
+        
+        if(!file) {
+            completion(nil, error);
+        }
+    }];
+}
+
+-(void) setUserProfilePic:(UIImage *)chosenImage {
+    NSData *imageData = UIImagePNGRepresentation(chosenImage);
+    PFFile *imageFile = [PFFile fileWithName:@"profile.png" data:imageData];
+    [imageFile saveInBackground];
+    PFUser *user = [PFUser currentUser];
+    [user setObject:imageFile forKey:@"profilePic"];
+    [user saveInBackground];
+}
+
+
 @end

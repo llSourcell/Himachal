@@ -79,9 +79,7 @@
     
 }
 
-
--(void) drawButtons {
-    // snap button to capture image
+-(void) drawSnapButton {
     UIButton * snapButton = [UIButton buttonWithType:UIButtonTypeCustom];
     snapButton.frame = CGRectMake(125, 400, 70.0f, 70.0f);
     snapButton.clipsToBounds = YES;
@@ -97,27 +95,34 @@
     [self.view bringSubviewToFront:snapButton];
     
     
-    
+}
+
+-(void) drawFlipButton {
     UIButton *flipButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     flipButton.frame = CGRectMake(260, 10, 50.0f, 50.0f);
     [flipButton addTarget:self action:@selector(_handleFlipButton:) forControlEvents:UIControlEventTouchUpInside];
-   // flipButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
+    // flipButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [self.view addSubview:flipButton];
     [flipButton setBackgroundImage:[UIImage imageNamed:@"flipIcon.png"]
-                        forState:UIControlStateNormal];
+                          forState:UIControlStateNormal];
     [self.view bringSubviewToFront:flipButton];
     
-    
+}
+
+-(void) drawRecordingButton {
     self.recordingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.recordingButton.frame = CGRectMake(260, 10, 50.0f, 50.0f);
     [self.recordingButton addTarget:self action:@selector(_handleFlipButton:) forControlEvents:UIControlEventTouchUpInside];
     // flipButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
     [self.recordingButton setBackgroundImage:[UIImage imageNamed:@"recording.png"]
-                          forState:UIControlStateNormal];
+                                    forState:UIControlStateNormal];
+}
 
-    
 
-
+-(void) drawButtons {
+    [self drawSnapButton];
+    [self drawFlipButton];
+    [self drawRecordingButton];
 }
 
 -(void) drawRecordingUI {
@@ -138,9 +143,7 @@
     self.recCircle.layer.shouldRasterize = YES;
     [self.recCircle addTarget:self action:@selector(snapButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.recCircle];
-    
     [self.view bringSubviewToFront:self.recCircle];
-    
     [self flashOn:self.recCircle];
 }
 
@@ -181,16 +184,9 @@
     self.recCircle.layer.rasterizationScale = [UIScreen mainScreen].scale;
     self.recCircle.layer.shouldRasterize = YES;
     [self.recCircle addTarget:self action:@selector(snapButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-
-
-    
     [self.view addSubview:self.recCircle];
-    
     [self.view bringSubviewToFront:self.recCircle];
-    
     [self.recCircle setNeedsDisplay];
-
-    
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:1.5];
     [self.recCircle setAlpha:0.0];
@@ -231,8 +227,6 @@
     vision.outputFormat = PBJOutputFormatSquare;
     vision.videoRenderingEnabled = YES;
     vision.additionalCompressionProperties = @{AVVideoProfileLevelKey : AVVideoProfileLevelH264Baseline30};
-    // specify a maximum duration with the following property
-    // vision.maximumCaptureDuration = CMTimeMakeWithSeconds(5, 600); // ~ 5 seconds
 }
 
 
@@ -274,7 +268,6 @@
     
     //show video player
     [self presentViewController:self.videoPlayerController animated:YES completion:^{
-        NSLog(@"YO");
     }];
     
 }

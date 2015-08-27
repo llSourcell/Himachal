@@ -9,15 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @protocol HMDiscoveryHeaderDelegate <NSObject>
-
-- (void)didPressSearchinHeader:(UITextField *) textField;
-- (void)didPressUserButton;
-- (void)didPressVideoButton;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 @end
 
 @interface HMDiscoveryHeaderView : UIView <UISearchBarDelegate, HMDiscoveryHeaderDelegate, UITextFieldDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) id <HMDiscoveryHeaderDelegate> delegate;
+@property (nonatomic, strong) UIButton *userButton;
+@property (nonatomic, strong) UIButton *videoButton;
 
 @end

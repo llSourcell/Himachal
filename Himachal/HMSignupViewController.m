@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "UIImageView+PlayGIF.h"
 #import "RKDropdownAlert.h"
+#import "HMSizes.h"
 
 
 
@@ -41,7 +42,6 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if ((self = [super init])) {
-      //  self.view.backgroundColor = [UIColor whiteColor]; // or some other non-clear color
         
     }
     return self;
@@ -60,22 +60,22 @@
 
 
 -(void) drawUI {
-  //  [self drawBackgroundGIF];
-    [self setTextFieldProperties:self.usernameTextField placeholderText:@"enter username" initWithFrame:CGRectMake(30, 200, 250, 40) andTag:(NSInteger) 1 security:FALSE];
-    [self setTextFieldProperties:self.passwordTextField placeholderText:@"enter password" initWithFrame:CGRectMake(30, 250, 250, 40) andTag:(NSInteger) 2 security:TRUE];
-    [self setTextFieldProperties:self.passwordReentryTextField placeholderText:@"enter password again" initWithFrame:CGRectMake(30, 300, 250, 40) andTag:(NSInteger) 3 security:TRUE];
-    [self setTextFieldProperties:self.emailTextField placeholderText:@"enter email" initWithFrame:CGRectMake(30, 350, 250, 40) andTag:(NSInteger) 4 security:FALSE];
+    [self drawBackgroundGIF];
+    [self drawInputTextfields];
     [self drawSignupButton];
     [self detectTapOutsideTextFields];
     
 }
 
+-(void) drawInputTextfields {
+    [self setTextFieldProperties:self.usernameTextField placeholderText:@"enter username" initWithFrame:CGRectMake(30, 200, 250, 40) andTag:(NSInteger) 1 security:FALSE];
+    [self setTextFieldProperties:self.passwordTextField placeholderText:@"enter password" initWithFrame:CGRectMake(30, 250, 250, 40) andTag:(NSInteger) 2 security:TRUE];
+    [self setTextFieldProperties:self.passwordReentryTextField placeholderText:@"enter password again" initWithFrame:CGRectMake(30, 300, 250, 40) andTag:(NSInteger) 3 security:TRUE];
+    [self setTextFieldProperties:self.emailTextField placeholderText:@"enter email" initWithFrame:CGRectMake(30, 350, 250, 40) andTag:(NSInteger) 4 security:FALSE];
+}
+
 -(void) drawBackgroundGIF {
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    UIImageView *gifView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,screenWidth,screenHeight)];
-    //gifView.backgroundColor =[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0];
+    UIImageView *gifView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,[[HMSizes sharedInstance] getScreenWidth],[[HMSizes sharedInstance] getScreenHeight])];
     gifView.gifPath = [[NSBundle mainBundle] pathForResource:@"snowingmountain1.gif" ofType:nil];
     [self.view addSubview:gifView];
     [self.view sendSubviewToBack:gifView];
@@ -84,12 +84,6 @@
 
 -(void) setTextFieldProperties: (UITextField *) myField placeholderText :(NSString*) text  initWithFrame: (CGRect) rect andTag:(NSInteger) tag security:(BOOL) isSecure {
     myField= [[AwesomeTextField alloc] initWithFrame:rect];
-    //NSLog(@"my field %@", myField);
-    //myField.leftViewMode =UITextFieldViewModeAlways;
-    //myField.leftView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userIcon"]];
-    //myField.leftView.frame = CGRectMake(5,0,40,25);
-    //myField.borderStyle = UITextBorderStyleBezel;
-    //myField.backgroundColor = [UIColor whiteColor];
     myField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [myField setReturnKeyType:UIReturnKeyDone];
     myField.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:17];
@@ -112,14 +106,8 @@
 }
 
 -(void) drawSignupButton {
-    
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-
-    
     //[1] draw
-    self.signupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, screenHeight-50, screenWidth, 50)];
+    self.signupButton = [[UIButton alloc] initWithFrame:CGRectMake(0, [[HMSizes sharedInstance] getScreenHeight]-50, [[HMSizes sharedInstance] getScreenWidth], 50)];
     self.signupButton.backgroundColor = [UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0];
     [self.signupButton setTitle:@"Signup" forState:UIControlStateNormal];
     [self.view addSubview:self.signupButton];
@@ -219,8 +207,6 @@
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             if(!error) {
                 [RKDropdownAlert title:@"Success" message:@"You've signed up"  backgroundColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] textColor:[UIColor whiteColor] time:2];
-
-                
             }
             else {
                 [RKDropdownAlert title:@"Error" message:[error localizedDescription]  backgroundColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] textColor:[UIColor whiteColor] time:2];
@@ -229,10 +215,6 @@
         }];
         
     }
- 
-    
-
-    
 }
 
 @end

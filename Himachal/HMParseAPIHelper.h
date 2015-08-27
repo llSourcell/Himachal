@@ -27,5 +27,20 @@
 
 -(void) getVideos:(void (^)(NSArray * objects, NSError *error)) completion;
 
+
+//Get user profile pic
+-(void) getUserProfilePic:(void (^)(UIImage *profilePic, NSError *error)) completion;
+
+
+-(void) setUserProfilePic:(UIImage *) chosenImage;
+
+
+
+
+
+
+
+
+
 @end
 
