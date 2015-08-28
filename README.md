@@ -2,8 +2,7 @@
 #Himachal
 
 ![](http://media.giphy.com/media/3o85xoddRcUqAjzEWY/giphy.gif)
-
-
+![](snapsmaller2.gif)
 
 Himachal is a social networking app that lets you share videos with friends. You don't need to tag your videos, the app will do it for you using machine learning. 
 
