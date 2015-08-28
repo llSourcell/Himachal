@@ -1,7 +1,7 @@
 
 #Himachal
 
-![alt tag](https://media.giphy.com/media/3o85xoddRcUqAjzEWY/giphy.gif)
+![alt tag](http://pics3.city-data.com/images/bsheader.jpg)
 
 
 
