@@ -75,7 +75,6 @@
     [self.videoButton setTitle:@"Videos" forState:UIControlStateNormal];
     [self.videoButton setTitleColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0] forState:UIControlStateNormal];
     [self.videoButton addTarget:self action:@selector(showVideos:) forControlEvents:UIControlEventTouchUpInside];
-
     [self addSubview:self.videoButton];
 
 }

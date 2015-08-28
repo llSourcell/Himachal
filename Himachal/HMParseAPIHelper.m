@@ -130,7 +130,9 @@
     [imageFile saveInBackground];
     PFUser *user = [PFUser currentUser];
     [user setObject:imageFile forKey:@"profilePic"];
-    [user saveInBackground];
+    [user saveInBackgroundWithBlock:^(BOOL success, NSError *error) {
+        
+    }];
 }
 
 

@@ -209,11 +209,6 @@
             if (cell == nil) {
                 cell = [[VideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-//            NSString *dateString = [NSDateFormatter localizedStringFromDate:object.updatedAt
-//                                                                  dateStyle:NSDateFormatterShortStyle
-//                                                                  timeStyle:NSDateFormatterFullStyle];
-//            
-//            
             PFFile *file = [object objectForKey:@"videoFile"];
             Video *vid = [Video videoWithStringURL:file.url];
             [cell setDelegate:self];
@@ -227,24 +222,15 @@
             if (cell == nil) {
                 cell = [[VideoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-             //   [cell addButtonToCell];
-//            cell.textLabel.frame = CGRectMake(cell.textLabel.frame.origin.x+50, cell.textLabel.frame.origin.y,cell.textLabel.frame.size.width, cell.textLabel.frame.size.height);
-//            cell.textLabel.text = [object objectForKey:@"username"];
-//            [cell.textLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:16]];
-//            
+    
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(70,15, 30, 30)];
             label.text = [object objectForKey:@"username"];
            [label setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:16]];
             [label sizeToFit];
-
             [cell.contentView addSubview:label];
-            
-            
             [cell.contentView.layer setBorderWidth:0.25f];
             [cell.contentView.layer setBorderColor:[UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0].CGColor];
 
-            
-            // snap button to capture image
             UIButton * profilePic = [UIButton buttonWithType:UIButtonTypeCustom];
             profilePic.frame = CGRectMake(10, 5, 40, 40);
             profilePic.clipsToBounds = YES;
@@ -280,7 +266,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    //TODO wrap this and put it in the helper class pull from users followed array.
     PFQuery *innerQuery = [PFQuery queryWithClassName:@"_User"];
     [innerQuery whereKey:@"objectId" equalTo:[PFUser currentUser].objectId];
     [innerQuery findObjectsInBackgroundWithBlock:^(NSArray *response, NSError *error) {

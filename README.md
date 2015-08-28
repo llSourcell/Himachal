@@ -1,6 +1,8 @@
 # Himachal
 Snapchat + vine + machine learning 
 
+<p><a href="https://camo.githubusercontent.com/c4dd33760c2f695964d2a7325ddc163d5ee0694f/687474703a2f2f672e7265636f726469742e636f2f6d444a6f72644d71646d2e676966" target="_blank"><img src="https://camo.githubusercontent.com/c4dd33760c2f695964d2a7325ddc163d5ee0694f/687474703a2f2f672e7265636f726469742e636f2f6d444a6f72644d71646d2e676966" alt="controls" data-canonical-src="http://g.recordit.co/mDJordMqdm.gif" style="max-width:100%;"></a></p>
+
 
 Himachal is a social networking app that lets you share videos with friends. You don't need to tag your videos, the app will do it for you using machine learning. 
 

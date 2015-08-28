@@ -130,10 +130,10 @@
 }
 
 -(void) drawTitleLogo {
-    UILabel *logoLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 100, [[HMSizes sharedInstance] getScreenWidth], 50)];
-    
+    UILabel *logoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, [[HMSizes sharedInstance] getScreenWidth], 50)];
+    logoLabel.textAlignment = NSTextAlignmentCenter;
     logoLabel.text = @"Himachal";
-    logoLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:50];
+    logoLabel.font = [UIFont fontWithName:@"Snell Roundhand" size:60];
     logoLabel.textColor = [UIColor colorWithRed:0.62 green:0.42 blue:0.63 alpha:1.0];
     [self.view addSubview:logoLabel];
     [self.view bringSubviewToFront:logoLabel];
