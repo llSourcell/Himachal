@@ -1,7 +1,7 @@
 
 #Himachal
 
-![Demo](https://media.giphy.com/media/3o85xoddRcUqAjzEWY/giphy.gif)
+![](http://media.giphy.com/media/3o85xoddRcUqAjzEWY/giphy.gif)
 
 
 
